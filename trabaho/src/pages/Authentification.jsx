@@ -9,14 +9,27 @@ const Authentification = () => {
 
    return (
       <div className="flex flex-row">
+         <style>
+            {`
+          .panel-transition {
+            transition: transform 0.3s ease;
+          }
+
+          .panel-open {
+            transform: translateX(0);
+          }
+
+          .panel-closed {
+            transform: translateX(96%);
+          }
+        `}
+         </style>
          <div
-            className={`absolute ${
-               isPanelOpen ? 'left-0' : 'right-0'
-            } h-screen w-1/2 my-8 ${
+            className={`absolute h-screen w-1/2 my-8 z-10 bg-[#216869] ${
                isPanelOpen ? 'ml-8' : 'mr-8'
-            } z-10 bg-[#216869] ${
-               isPanelOpen ? 'rounded-l-2xl' : 'rounded-r-2xl'
-            }`}
+            } ${isPanelOpen ? 'rounded-l-2xl' : 'rounded-r-2xl'} ${
+               isPanelOpen ? 'panel-open' : 'panel-closed'
+            } panel-transition`}
          ></div>
          <div id="left_Container" className="flex-1 my-8 ml-8">
             <div className="flex flex-col items-center justify-evenly h-screen bg-[#e5ece9] rounded-l-2xl">
