@@ -1,9 +1,26 @@
+import React, { useState } from 'react';
+
 const Authentification = () => {
+   const [isPanelOpen, setIsPanelOpen] = useState(false);
+
+   const togglePanel = () => {
+      setIsPanelOpen(!isPanelOpen);
+   };
+
    return (
       <div className="flex flex-row">
+         <div
+            className={`absolute ${
+               isPanelOpen ? 'left-0' : 'right-0'
+            } h-screen w-1/2 my-8 ${
+               isPanelOpen ? 'ml-8' : 'mr-8'
+            } z-10 bg-[#216869] ${
+               isPanelOpen ? 'rounded-l-2xl' : 'rounded-r-2xl'
+            }`}
+         ></div>
          <div id="left_Container" className="flex-1 my-8 ml-8">
-            <div className="flex flex-col items-center justify-center gap-y-14 h-screen bg-[#e5ece9] rounded-l-2xl">
-               <h2 className="mb-12 text-2xl">Welcome to Trabaho</h2>
+            <div className="flex flex-col items-center justify-evenly h-screen bg-[#e5ece9] rounded-l-2xl">
+               <h2 className="mt-12 text-2xl">Welcome to Trabaho</h2>
                <form action="" className="w-96">
                   <div class="relative w-full mb-8 group">
                      <input
@@ -103,10 +120,17 @@ const Authentification = () => {
                      </button>
                   </div>
                </form>
-               <div className="flex justify-center mt-12">
+               <div className="flex justify-center mb-12">
                   <p>
                      Already have a account ?{' '}
-                     <a href="#" class="text-blue-600 hover:underline">
+                     <a
+                        href=""
+                        onClick={(e) => {
+                           e.preventDefault();
+                           togglePanel();
+                        }}
+                        class="text-blue-600 hover:underline"
+                     >
                         Login here
                      </a>
                   </p>
@@ -114,8 +138,8 @@ const Authentification = () => {
             </div>
          </div>
          <div id="right_container" className="flex-1 my-8 mr-8">
-            <div className="flex flex-col items-center justify-center gap-y-14 bg-[#e5ece9] h-screen rounded-r-2xl">
-               <h2 className="mb-12 text-2xl">Welcome back</h2>
+            <div className="flex flex-col items-center justify-evenly bg-[#e5ece9] h-screen rounded-r-2xl">
+               <h2 className="mt-12 text-2xl">Welcome back</h2>
                <form action="" className="w-96">
                   <div class="relative w-full mb-8 group">
                      <input
@@ -179,10 +203,17 @@ const Authentification = () => {
                      </button>
                   </div>
                </form>
-               <div className="flex justify-center mt-12">
+               <div className="flex justify-center mb-12">
                   <p>
                      Does not have a account ?{' '}
-                     <a href="#" class="text-blue-600 hover:underline">
+                     <a
+                        href=""
+                        onClick={(e) => {
+                           e.preventDefault();
+                           togglePanel();
+                        }}
+                        class="text-blue-600 hover:underline"
+                     >
                         Sign in here
                      </a>
                   </p>
