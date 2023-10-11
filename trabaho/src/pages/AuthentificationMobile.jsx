@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { motion, useAnimate, useAnimation } from 'framer-motion';
 
 const AuthentificationMobile = () => {
    const [isPanelOpen, setIsPanelOpen] = useState(false);
@@ -16,7 +17,7 @@ const AuthentificationMobile = () => {
             <div
                id="login_panel"
                className={`absolute w-full h-2/3 bottom-0 ${
-                  isPanelOpen ? 'visible' : 'invisible'
+                  isPanelOpen ? 'invisible' : 'visible'
                }`}
             >
                <div className="flex flex-col items-center justify-evenly bg-[#e5ece9] h-full w-full rounded-t-3xl">
@@ -105,7 +106,7 @@ const AuthentificationMobile = () => {
             <div
                id="sign_in_panel"
                className={`absolute w-full h-2/3 z-10 bottom-0 ${
-                  isPanelOpen ? 'invisible' : 'visible'
+                  isPanelOpen ? 'visible' : 'invisible'
                }`}
             >
                <div className="flex flex-col items-center justify-evenly h-full bg-[#e5ece9] rounded-t-3xl">
