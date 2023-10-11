@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+import UserCard from '../components/Dashboard Card/UserCardStats';
 
 const AdminDashboard = () => {
    return (
       <div>
-         <nav className="fixed top-0 z-50 w-full bg-white border-b border-[#425154]">
+         <nav className="fixed top-0 z-50 w-full bg-[#e5ece9] border-b border-[#425154]">
             <div className="px-3 py-3 lg:px-5 lg:pl-3">
                <div className="flex items-center justify-between">
                   <div className="flex items-center justify-start">
@@ -22,11 +23,7 @@ const AdminDashboard = () => {
                            viewBox="0 0 20 20"
                            xmlns="http://www.w3.org/2000/svg"
                         >
-                           <path
-                              clip-rule="evenodd"
-                              fill-rule="evenodd"
-                              d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"
-                           ></path>
+                           <path d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
                         </svg>
                      </button>
                      <span className="self-center text-xl font-semibold sm:text-2xl ml-2 sm:ml-8 whitespace-nowrap text-black">
@@ -37,7 +34,7 @@ const AdminDashboard = () => {
                      <div className="flex items-center ml-3">
                         <div className="mr-6">
                            <svg
-                              class="w-6 h-6 text-[#425154]"
+                              className="w-6 h-6 text-[#425154]"
                               aria-hidden="true"
                               xmlns="http://www.w3.org/2000/svg"
                               fill="currentColor"
@@ -46,77 +43,12 @@ const AdminDashboard = () => {
                               <path d="M12.133 10.632v-1.8A5.406 5.406 0 0 0 7.979 3.57.946.946 0 0 0 8 3.464V1.1a1 1 0 0 0-2 0v2.364a.946.946 0 0 0 .021.106 5.406 5.406 0 0 0-4.154 5.262v1.8C1.867 13.018 0 13.614 0 14.807 0 15.4 0 16 .538 16h12.924C14 16 14 15.4 14 14.807c0-1.193-1.867-1.789-1.867-4.175ZM3.823 17a3.453 3.453 0 0 0 6.354 0H3.823Z" />
                            </svg>
                         </div>
-                        <div>
-                           <button
-                              type="button"
-                              className="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-[#425154]"
-                              aria-expanded="false"
-                           >
-                              <span className="sr-only">Open user menu</span>
-                              <img
-                                 className="w-8 h-8 rounded-full"
-                                 src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-                                 alt="user photo"
-                              />
-                           </button>
-                        </div>
-
-                        <div
-                           className="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow"
-                           id="dropdown-user"
-                        >
-                           <div className="px-4 py-3" role="none">
-                              <p
-                                 className="text-sm text-gray-900 dark:text-white"
-                                 role="none"
-                              >
-                                 Neil Sims
-                              </p>
-                              <p
-                                 className="text-sm font-medium text-gray-900 truncate dark:text-gray-300"
-                                 role="none"
-                              >
-                                 neil.sims@flowbite.com
-                              </p>
-                           </div>
-                           <ul className="py-1" role="none">
-                              <li>
-                                 <a
-                                    href="#"
-                                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                                    role="menuitem"
-                                 >
-                                    Dashboard
-                                 </a>
-                              </li>
-                              <li>
-                                 <a
-                                    href="#"
-                                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                                    role="menuitem"
-                                 >
-                                    Settings
-                                 </a>
-                              </li>
-                              <li>
-                                 <a
-                                    href="#"
-                                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                                    role="menuitem"
-                                 >
-                                    Earnings
-                                 </a>
-                              </li>
-                              <li>
-                                 <a
-                                    href="#"
-                                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                                    role="menuitem"
-                                 >
-                                    Sign out
-                                 </a>
-                              </li>
-                           </ul>
+                        <div className="flex text-sm bg-gray-800 rounded-full ring-2 ring-[#425154]">
+                           <img
+                              className="w-10 h-10 rounded-full"
+                              src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                              alt="user photo"
+                           />
                         </div>
                      </div>
                   </div>
@@ -130,7 +62,7 @@ const AdminDashboard = () => {
             aria-label="Sidebar"
          >
             <div className="h-full px-3 pb-4 overflow-y-auto bg-[#425154]">
-               <ul className="space-y-2 font-medium">
+               <ul className="space-y-4 font-medium">
                   <li>
                      <a
                         href="#"
@@ -174,7 +106,7 @@ const AdminDashboard = () => {
                         className="flex items-center p-2 text-white rounded-lg  hover:bg-[#28c27a] group"
                      >
                         <svg
-                           class="w-5 h-5 text-[#e5ece9] transition duration-75  group-hover:text-white"
+                           className="w-5 h-5 text-[#e5ece9] transition duration-75  group-hover:text-white"
                            aria-hidden="true"
                            xmlns="http://www.w3.org/2000/svg"
                            fill="currentColor"
@@ -195,13 +127,16 @@ const AdminDashboard = () => {
          <div className="p-4 sm:ml-64">
             <div className="p-4 mt-14">
                <div className="grid grid-cols-2 gap-4 mb-4">
-                  <div className="flex items-center justify-center h-48 rounded bg-[#e5ece9]">
-                     <p className="text-2xl text-black">User Card</p>
+                  <div className="col-span-1">
+                     <UserCard cardName={'Total Users'} />
                   </div>
-                  <div className="flex items-center justify-center h-48 rounded bg-[#e5ece9]">
-                     <p className="text-2xl text-black">Jobs Card</p>
+                  <div className="col-span-1">
+                     <UserCard cardName={'Total Jobs'} />
                   </div>
                </div>
+            </div>
+            <div className='flex-1 bg-slate-400'>
+               fff
             </div>
          </div>
       </div>
