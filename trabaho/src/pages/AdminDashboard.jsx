@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import UserCard from '../components/Dashboard Card/UserCardStats';
+import CardStats from '../components/Dashboard/CardStats';
+import AdminTable from '../components/Dashboard/AdminTable';
 
 const AdminDashboard = () => {
    return (
@@ -128,15 +129,15 @@ const AdminDashboard = () => {
             <div className="p-4 mt-14">
                <div className="grid grid-cols-2 gap-4 mb-4">
                   <div className="col-span-1">
-                     <UserCard cardName={'Total Users'} />
+                     <CardStats cardName={'Total Users'} />
                   </div>
                   <div className="col-span-1">
-                     <UserCard cardName={'Total Jobs'} />
+                     <CardStats cardName={'Total Jobs'} />
                   </div>
                </div>
             </div>
             <div className='flex-1 bg-slate-400'>
-               fff
+               <AdminTable/>
             </div>
          </div>
       </div>
