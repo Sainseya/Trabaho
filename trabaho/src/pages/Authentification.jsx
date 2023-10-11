@@ -8,7 +8,7 @@ const Authentification = () => {
    };
 
    return (
-      <div className="flex flex-row">
+      <div className="flex flex-row h-screen">
          <style>
             {`
           .panel-transition {
@@ -16,25 +16,19 @@ const Authentification = () => {
           }
 
           .panel-open {
-            transform: translateX(0);
+            transform: translateX(-100%);
           }
 
           .panel-closed {
-            transform: translateX(96%);
+            transform: translateX(0);
           }
         `}
          </style>
-         <div
-            className={`absolute h-screen w-1/2 my-8 z-10 bg-[#216869] ${
-               isPanelOpen ? 'ml-8' : 'mr-8'
-            } ${isPanelOpen ? 'rounded-l-2xl' : 'rounded-r-2xl'} ${
-               isPanelOpen ? 'panel-open' : 'panel-closed'
-            } panel-transition`}
-         ></div>
+
          <div id="left_Container" className="flex-1 my-8 ml-8">
-            <div className="flex flex-col items-center justify-evenly h-screen bg-[#e5ece9] rounded-l-2xl">
+            <div className="flex flex-col items-center justify-evenly h-full bg-[#e5ece9] rounded-l-2xl">
                <h2 className="mt-12 text-2xl">Welcome to Trabaho</h2>
-               <form action="" className="w-96">
+               <form action="" className="xl:w-96  mx-8 ">
                   <div class="relative w-full mb-8 group">
                      <input
                         type="email"
@@ -150,10 +144,17 @@ const Authentification = () => {
                </div>
             </div>
          </div>
-         <div id="right_container" className="flex-1 my-8 mr-8">
-            <div className="flex flex-col items-center justify-evenly bg-[#e5ece9] h-screen rounded-r-2xl">
+         <div id="right_container" className="flex-1 my-8 mr-8 relative">
+            <div
+               className={`absolute h-full w-full z-10 bg-[#216869] ${
+                  isPanelOpen ? '' : 'mr-8'
+               } ${isPanelOpen ? 'rounded-l-2xl' : 'rounded-r-2xl'} ${
+                  isPanelOpen ? 'panel-open' : 'panel-closed'
+               } panel-transition`}
+            ></div>
+            <div className="flex flex-col items-center justify-evenly bg-[#e5ece9] h-full rounded-r-2xl">
                <h2 className="mt-12 text-2xl">Welcome back</h2>
-               <form action="" className="w-96">
+               <form action="" className="xl:w-96 mx-8">
                   <div class="relative w-full mb-8 group">
                      <input
                         type="email"
