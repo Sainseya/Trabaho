@@ -1,8 +1,8 @@
-const TableRowData = ({
-   email = 'Email.0@gmail.com',
-   firstName = 'Firstname',
-   lastName = 'Lastname',
-   hashPassword = '*****',
+const TableJobsRowData = ({
+   name = 'Job1',
+   tag = 'default',
+   company = 'defaultCompany',
+   applicants = 0,
 }) => {
    return (
       <tr class="border-b">
@@ -10,16 +10,16 @@ const TableRowData = ({
             scope="row"
             class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap"
          >
-            {email}
+            {name}
          </th>
-         <td class="px-4 py-3">{firstName}</td>
-         <td class="px-4 py-3">{lastName}</td>
-         <td class="px-4 py-3">{hashPassword}</td>
+         <td class="px-4 py-3">{tag}</td>
+         <td class="px-4 py-3">{company}</td>
+         <td class="px-4 py-3">{applicants}</td>
 
          <td class="px-4 py-3 flex items-center justify-end">
             <button
-               id={`${email}-dropdown-button`}
-               data-dropdown-toggle={`${email}-dropdown`}
+               id={`${name}-dropdown-button`}
+               data-dropdown-toggle={`${name}-dropdown`}
                class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none"
                type="button"
             >
@@ -34,12 +34,12 @@ const TableRowData = ({
                </svg>
             </button>
             <div
-               id={`${email}-dropdown`}
+               id={`${name}-dropdown`}
                class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow"
             >
                <ul
                   class="py-1 text-sm text-gray-700"
-                  aria-labelledby={`${email}-dropdown-button`}
+                  aria-labelledby={`${name}-dropdown-button`}
                >
                   <li>
                      <a href="#" class="block py-2 px-4 hover:bg-gray-100">
@@ -61,4 +61,4 @@ const TableRowData = ({
    );
 };
 
-export default TableRowData;
+export default TableJobsRowData;

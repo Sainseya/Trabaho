@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import CardStats from '../components/Dashboard/CardStats';
-import AdminUserTable from '../components/Dashboard/Table/AdminTable';
+import AdminUserTable from '../components/Dashboard/Table/AdminUserTable';
+import AdminJobsTable from '../components/Dashboard/Table/AdminJobsTable';
 
 const AdminDashboard = () => {
    1;
@@ -162,7 +163,7 @@ const AdminDashboard = () => {
                <AdminUserTable />
             </div>
             <div id="jobsTable" className={`${showJobsTable ? '' : 'hidden'}`}>
-               gfidigbdifbg
+               <AdminJobsTable />
             </div>
          </div>
       </div>

@@ -1,7 +1,7 @@
 import FilterType from './FilterType';
-import TableRowData from './TableRowData';
+import TableJobsRowData from './TableJobsRowData';
 
-const AdminUserTable = () => {
+const AdminJobsTable = () => {
    return (
       <section class="p-4">
          <div class="mx-auto max-w-screen-xl">
@@ -58,12 +58,12 @@ const AdminUserTable = () => {
                               d="M9 1v16M1 9h16"
                            />
                         </svg>
-                        Add User
+                        Add Job
                      </button>
                      <div class="flex items-center space-x-3 w-full md:w-auto">
                         <button
-                           id="filterDropdownButton"
-                           data-dropdown-toggle="filterDropdown"
+                           id="filterJobsDropdownButton"
+                           data-dropdown-toggle="filterJobsDropdown"
                            class="w-full md:w-auto flex items-center justify-center py-2 px-4 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10"
                            type="button"
                         >
@@ -92,7 +92,7 @@ const AdminUserTable = () => {
                            </svg>
                         </button>
                         <div
-                           id="filterDropdown"
+                           id="filterJobsDropdown"
                            class="z-10 hidden w-48 p-3 bg-white rounded-lg shadow"
                         >
                            <h6 class="mb-3 text-sm font-medium text-gray-900">
@@ -100,10 +100,10 @@ const AdminUserTable = () => {
                            </h6>
                            <ul
                               class="space-y-2 text-sm"
-                              aria-labelledby="filterDropdownButton"
+                              aria-labelledby="filterJobsDropdownButton"
                            >
-                              <FilterType type="Test" />
-                              <FilterType />
+                              <FilterType type="Remote" />
+                              <FilterType type="On site"/>
                            </ul>
                         </div>
                      </div>
@@ -114,16 +114,16 @@ const AdminUserTable = () => {
                      <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                         <tr>
                            <th scope="col" class="px-4 py-3">
-                              Email
-                           </th>
-                           <th scope="col" class="px-4 py-3">
                               Name
                            </th>
                            <th scope="col" class="px-4 py-3">
-                              Last Name
+                              Tags
                            </th>
                            <th scope="col" class="px-4 py-3">
-                              Hash Password
+                              Company
+                           </th>
+                           <th scope="col" class="px-4 py-3">
+                              Applicants
                            </th>
                            <th scope="col" class="px-4 py-3">
                               <span class="sr-only">Actions</span>
@@ -131,42 +131,10 @@ const AdminUserTable = () => {
                         </tr>
                      </thead>
                      <tbody>
-                        <TableRowData
-                           email="Email.1@gmail.com"
-                           firstName="Emma"
-                           lastName="Dupont"
-                           hashPassword="5f4dcc3b"
-                        />
-                        <TableRowData
-                           email="Email.2@gmail.com"
-                           firstName="Luca"
-                           lastName="Martin"
-                           hashPassword="5a9f19e8"
-                        />
-                        <TableRowData
-                           email="Email.3@gmail.com"
-                           firstName="Sarah"
-                           lastName="Johnson"
-                           hashPassword="0192023a"
-                        />
-                        <TableRowData
-                           email="Email.4@gmail.com"
-                           firstName="Alexendre"
-                           lastName="Lefebvre"
-                           hashPassword="b93a42e8"
-                        />
-                        <TableRowData
-                           email="Email.5@gmail.com"
-                           firstName="Emily"
-                           lastName="Walker"
-                           hashPassword="3b9fe123"
-                        />
-                        <TableRowData
-                           email="Email.6@gmail.com"
-                           firstName="Thomas"
-                           lastName="Garcia"
-                           hashPassword="8b87d19f"
-                        />
+                        <TableJobsRowData name='Front-End Dev' tag='On site' company='Nacom' applicants={2}/>
+                        <TableJobsRowData name='DevOps' tag='Remote' company='Tales' applicants={0}/>
+                        <TableJobsRowData name='Consulting' tag='On site' company='Alten' applicants={1}/>
+                        <TableJobsRowData name='Full-Stack' tag='Remote' company='Ubisoft' applicants={4}/>
                      </tbody>
                   </table>
                </div>
@@ -267,4 +235,4 @@ const AdminUserTable = () => {
    );
 };
 
-export default AdminUserTable;
+export default AdminJobsTable;
