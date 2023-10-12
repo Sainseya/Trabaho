@@ -7,7 +7,7 @@ const Header = () => {
          <div className="flex-auto text-5xl ">Trabaho</div>
          <div className="flex-auto flex-row gap-10 flex">
             <p className="hover:text-bleu w-auto">Find your job</p>
-            <p className="hover:text-bleu">Saved Job</p>
+            {/* <p className="hover:text-bleu">Saved Job</p> */}
          </div>
 
          <div className="flex-auto items-end ">

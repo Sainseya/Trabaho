@@ -3,10 +3,8 @@ import { jobDetails } from '../../../Data/datas';
 
 const JobCard = () => {
    return (
-      <div className="grid xl:grid-cols-4 md:grid-cols-1 gap-5 ml-auto ">
-         {jobDetails.map((job) => (
-            <Card key={job.id} job={job} />
-         ))}
+      <div className="flex flex-row pl-80 gap-9 ">
+         <Card />
       </div>
    );
 };
