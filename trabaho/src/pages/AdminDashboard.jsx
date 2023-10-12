@@ -164,6 +164,7 @@ const AdminDashboard = () => {
             </div>
             <div id="jobsTable" className={`${showJobsTable ? '' : 'hidden'}`}>
                <AdminJobsTable />
+               
             </div>
          </div>
       </div>
