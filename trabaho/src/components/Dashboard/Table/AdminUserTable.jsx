@@ -147,36 +147,6 @@ const AdminUserTable = () => {
          lastName: 'Martin',
          hashPassword: '5a9f19e8',
       },
-      {
-         email: 'test',
-         firstName: 'Luca',
-         lastName: 'Martin',
-         hashPassword: '5a9f19e8',
-      },
-      {
-         email: 'user.4@gexemple.com',
-         firstName: 'Luca',
-         lastName: 'Martin',
-         hashPassword: '5a9f19e8',
-      },
-      {
-         email: 'user.5@gexemple.com',
-         firstName: 'Luca',
-         lastName: 'Martin',
-         hashPassword: '5a9f19e8',
-      },
-      {
-         email: 'test',
-         firstName: 'Luca',
-         lastName: 'Martin',
-         hashPassword: '5a9f19e8',
-      },
-      {
-         email: 'user.4@gexemple.com',
-         firstName: 'Luca',
-         lastName: 'Martin',
-         hashPassword: '5a9f19e8',
-      },
    ];
 
    const offset = currentPage * usersPerPage;

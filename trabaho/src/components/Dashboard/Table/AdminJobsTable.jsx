@@ -1,7 +1,64 @@
+import React, { useState } from 'react';
+import ReactPaginate from 'react-paginate';
 import FilterType from './FilterType';
 import TableJobsRowData from './TableJobsRowData';
 
 const AdminJobsTable = () => {
+   const [currentPage, setCurrentPage] = useState(0);
+   const jobsPerPage = 6;
+
+   const jobs = [
+      {
+         name: 'Front-End Dev',
+         tags: 'On site',
+         company: 'Nacon',
+         applicants: 2,
+      },
+      {
+         name: 'DevOps',
+         tags: 'On site',
+         company: 'Tales',
+         applicants: 0,
+      },
+      {
+         name: 'Consulting',
+         tags: 'Remote',
+         company: 'Alten',
+         applicants: 1,
+      },
+      {
+         name: 'Full-Stack',
+         tags: 'On site',
+         company: 'Ubisoft',
+         applicants: 4,
+      },
+      {
+         name: 'Back-end',
+         tags: 'Remote',
+         company: 'Alten',
+         applicants: 5,
+      },
+      {
+         name: 'Project Manager',
+         tags: 'Remote',
+         company: 'Alten',
+         applicants: 0,
+      },
+      {
+         name: 'Developper',
+         tags: 'On site',
+         company: 'Ubisoft',
+         applicants: 1,
+      },
+   ];
+
+   const offset = currentPage * jobsPerPage;
+   const currentJobs = jobs.slice(offset, offset + jobsPerPage);
+
+   const handlePageClick = ({ selected }) => {
+      setCurrentPage(selected);
+   };
+
    return (
       <section class="p-4">
          <div class="mx-auto max-w-screen-xl">
@@ -103,7 +160,7 @@ const AdminJobsTable = () => {
                               aria-labelledby="filterJobsDropdownButton"
                            >
                               <FilterType type="Remote" />
-                              <FilterType type="On site"/>
+                              <FilterType type="On site" />
                            </ul>
                         </div>
                      </div>
@@ -131,10 +188,15 @@ const AdminJobsTable = () => {
                         </tr>
                      </thead>
                      <tbody>
-                        <TableJobsRowData name='Front-End Dev' tag='On site' company='Nacom' applicants={2}/>
-                        <TableJobsRowData name='DevOps' tag='Remote' company='Tales' applicants={0}/>
-                        <TableJobsRowData name='Consulting' tag='On site' company='Alten' applicants={1}/>
-                        <TableJobsRowData name='Full-Stack' tag='Remote' company='Ubisoft' applicants={4}/>
+                        {currentJobs.map((job, index) => (
+                           <TableJobsRowData
+                              key={index}
+                              name={job.name}
+                              tag={job.tags}
+                              company={job.company}
+                              applicants={job.applicants}
+                           />
+                        ))}
                      </tbody>
                   </table>
                </div>
@@ -143,91 +205,23 @@ const AdminJobsTable = () => {
                   aria-label="Table navigation"
                >
                   <span></span>
-                  <ul class="inline-flex items-stretch -space-x-px">
-                     <li>
-                        <a
-                           href="#"
-                           class="flex items-center justify-center h-full py-1.5 px-3 ml-0 text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700"
-                        >
-                           <span class="sr-only">Previous</span>
-                           <svg
-                              class="w-5 h-5"
-                              aria-hidden="true"
-                              fill="currentColor"
-                              viewbox="0 0 20 20"
-                              xmlns="http://www.w3.org/2000/svg"
-                           >
-                              <path
-                                 fill-rule="evenodd"
-                                 d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                                 clip-rule="evenodd"
-                              />
-                           </svg>
-                        </a>
-                     </li>
-                     <li>
-                        <a
-                           href="#"
-                           class="flex items-center justify-center text-sm z-10 py-2 px-3 leading-tight text-white bg-[#28c27a] border border-primary-300 hover:bg-[#59a96a]"
-                        >
-                           1
-                        </a>
-                     </li>
-                     <li>
-                        <a
-                           href="#"
-                           class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 "
-                        >
-                           2
-                        </a>
-                     </li>
-                     <li>
-                        <a
-                           href="#"
-                           aria-current="page"
-                           class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700"
-                        >
-                           3
-                        </a>
-                     </li>
-                     <li>
-                        <a
-                           href="#"
-                           class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700"
-                        >
-                           ...
-                        </a>
-                     </li>
-                     <li>
-                        <a
-                           href="#"
-                           class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700"
-                        >
-                           100
-                        </a>
-                     </li>
-                     <li>
-                        <a
-                           href="#"
-                           class="flex items-center justify-center h-full py-1.5 px-3 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700"
-                        >
-                           <span class="sr-only">Next</span>
-                           <svg
-                              class="w-5 h-5"
-                              aria-hidden="true"
-                              fill="currentColor"
-                              viewbox="0 0 20 20"
-                              xmlns="http://www.w3.org/2000/svg"
-                           >
-                              <path
-                                 fill-rule="evenodd"
-                                 d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                                 clip-rule="evenodd"
-                              />
-                           </svg>
-                        </a>
-                     </li>
-                  </ul>
+                  <div className="inline-flex items-stretch -space-x-px pagination">
+                     <ReactPaginate
+                        previousLabel={'Previous'}
+                        previousClassName="flex items-center justify-center h-full py-1.5 px-3 ml-0 text-gray-500 text-white bg-[#28c27a] rounded-l-lg border border-gray-300 hover:bg-[#59a96a]"
+                        nextLabel={'Next'}
+                        nextClassName="flex items-center justify-center h-full py-1.5 px-3 leading-tight text-white bg-[#28c27a] rounded-r-lg border border-gray-300 hover:bg-[#59a96a]"
+                        breakLabel={'...'}
+                        breakClassName="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700"
+                        pageCount={Math.ceil(jobs.length / jobsPerPage)}
+                        pageClassName="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700"
+                        marginPagesDisplayed={2}
+                        pageRangeDisplayed={3}
+                        onPageChange={handlePageClick}
+                        containerClassName='pagination flex'
+                        activeClassName="activePage text-white pointer-events-none"
+                     />
+                  </div>
                </nav>
             </div>
          </div>
