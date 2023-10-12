@@ -3,4 +3,8 @@
 @tailwind utilities;
 body {
    background-color: #e5ece9;
+
+.activePage {
+   background-color: #59a96a;
+   color: white; 
 }
