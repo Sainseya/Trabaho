@@ -1,11 +1,11 @@
 import FilterType from './FilterType';
 import TableRowData from './TableRowData';
 
-const AdminTable = () => {
+const AdminUserTable = () => {
    return (
-      <section class="p-3 sm:p-5">
-         <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
-            <div class="bg-white  border border-gray-200 relative shadow-md sm:rounded-lg overflow-hidden">
+      <section class="p-4">
+         <div class="mx-auto max-w-screen-xl">
+            <div class="bg-white  border border-gray-200 relative shadow-md rounded-lg overflow-hidden">
                <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
                   <div class="w-full md:w-1/2">
                      <form class="flex items-center">
@@ -267,4 +267,4 @@ const AdminTable = () => {
    );
 };
 
-export default AdminTable;
+export default AdminUserTable;

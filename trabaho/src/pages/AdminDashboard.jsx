@@ -1,8 +1,22 @@
 import React, { useState } from 'react';
 import CardStats from '../components/Dashboard/CardStats';
-import AdminTable from '../components/Dashboard/Table/AdminTable';
+import AdminUserTable from '../components/Dashboard/Table/AdminTable';
 
 const AdminDashboard = () => {
+   1;
+   const [showUserTable, setShowUserTable] = useState(false);
+   const [showJobsTable, setShowJobsTable] = useState(false);
+
+   const toggleUserTable = () => {
+      setShowUserTable(true);
+      setShowJobsTable(false);
+   };
+
+   const toggleJobsTable = () => {
+      setShowUserTable(false);
+      setShowJobsTable(true);
+   };
+
    return (
       <div>
          <nav className="fixed top-0 z-50 w-full bg-[#e5ece9] border-b border-[#425154]">
@@ -129,15 +143,18 @@ const AdminDashboard = () => {
             <div className="p-4 pt-8 mt-14">
                <div className="grid grid-cols-2 gap-4 mb-4">
                   <div className="col-span-1">
-                     <CardStats cardName={'Total Users'} />
+                     <CardStats cardName={'Total Users'} onClick={toggleUserTable} />
                   </div>
                   <div className="col-span-1">
-                     <CardStats cardName={'Total Jobs'} />
+                     <CardStats cardName={'Total Jobs'} onClick={toggleJobsTable}/>
                   </div>
                </div>
             </div>
-            <div>
-               <AdminTable/>
+            <div id="userTable" className={`${showUserTable ? '' : 'hidden'}`}>
+               <AdminUserTable />
+            </div>
+            <div id="jobsTable" className={`${showJobsTable ? '' : 'hidden'}`}>
+               gfidigbdifbg
             </div>
          </div>
       </div>
