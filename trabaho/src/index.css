@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.activePage {
+   background-color: #59a96a;
+   color: white; 
+}

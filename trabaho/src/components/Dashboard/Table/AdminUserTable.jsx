@@ -1,7 +1,191 @@
+import React, { useState } from 'react';
+import ReactPaginate from 'react-paginate';
 import FilterType from './FilterType';
 import TableUserRowData from './TableUserRowData';
 
 const AdminUserTable = () => {
+   const [currentPage, setCurrentPage] = useState(0);
+   const usersPerPage = 6;
+
+   const users = [
+      //User data
+      {
+         email: 'user.1@gexemple.com',
+         firstName: 'John',
+         lastName: 'Doe',
+         hashPassword: '5f4dcc3b',
+      },
+      {
+         email: 'user.2@gexemple.com',
+         firstName: 'Luca',
+         lastName: 'Martin',
+         hashPassword: '5a9f19e8',
+      },
+      {
+         email: 'user.3@gexemple.com',
+         firstName: 'Luca',
+         lastName: 'Martin',
+         hashPassword: '5a9f19e8',
+      },
+      {
+         email: 'user.4@gexemple.com',
+         firstName: 'Luca',
+         lastName: 'Martin',
+         hashPassword: '5a9f19e8',
+      },
+      {
+         email: 'user.5@gexemple.com',
+         firstName: 'Luca',
+         lastName: 'Martin',
+         hashPassword: '5a9f19e8',
+      },
+      {
+         email: 'user.6@gexemple.com',
+         firstName: 'Luca',
+         lastName: 'Martin',
+         hashPassword: '5a9f19e8',
+      },
+      {
+         email: 'user.4@gexemple.com',
+         firstName: 'Luca',
+         lastName: 'Martin',
+         hashPassword: '5a9f19e8',
+      },
+      {
+         email: 'user.1@gexemple.com',
+         firstName: 'John',
+         lastName: 'Doe',
+         hashPassword: '5f4dcc3b',
+      },
+      {
+         email: 'test',
+         firstName: 'Luca',
+         lastName: 'Martin',
+         hashPassword: '5a9f19e8',
+      },
+      {
+         email: 'user.3@gexemple.com',
+         firstName: 'Luca',
+         lastName: 'Martin',
+         hashPassword: '5a9f19e8',
+      },
+      {
+         email: 'user.4@gexemple.com',
+         firstName: 'Luca',
+         lastName: 'Martin',
+         hashPassword: '5a9f19e8',
+      },
+      {
+         email: 'user.5@test.com',
+         firstName: 'Luca',
+         lastName: 'Martin',
+         hashPassword: '5a9f19e8',
+      },
+      {
+         email: 'user.6@gexemple.com',
+         firstName: 'Luca',
+         lastName: 'Martin',
+         hashPassword: '5a9f19e8',
+      },
+      {
+         email: 'test',
+         firstName: 'Luca',
+         lastName: 'Martin',
+         hashPassword: '5a9f19e8',
+      },
+      {
+         email: 'user.1@gexemple.com',
+         firstName: 'John',
+         lastName: 'Doe',
+         hashPassword: '5f4dcc3b',
+      },
+      {
+         email: 'user.2@gexemple.com',
+         firstName: 'Luca',
+         lastName: 'Martin',
+         hashPassword: '5a9f19e8',
+      },
+      {
+         email: 'test',
+         firstName: 'Luca',
+         lastName: 'Martin',
+         hashPassword: '5a9f19e8',
+      },
+      {
+         email: 'user.4@gexemple.com',
+         firstName: 'Luca',
+         lastName: 'Martin',
+         hashPassword: '5a9f19e8',
+      },
+      {
+         email: 'user.5@gexemple.com',
+         firstName: 'Luca',
+         lastName: 'Martin',
+         hashPassword: '5a9f19e8',
+      },
+      {
+         email: 'user.6@gexemple.com',
+         firstName: 'Luca',
+         lastName: 'Martin',
+         hashPassword: '5a9f19e8',
+      },
+      {
+         email: 'testtest',
+         firstName: 'Luca',
+         lastName: 'Martin',
+         hashPassword: '5a9f19e8',
+      },
+      {
+         email: 'user.1@gexemple.com',
+         firstName: 'John',
+         lastName: 'Doe',
+         hashPassword: '5f4dcc3b',
+      },
+      {
+         email: 'user.2@gexemple.com',
+         firstName: 'Luca',
+         lastName: 'Martin',
+         hashPassword: '5a9f19e8',
+      },
+      {
+         email: 'test',
+         firstName: 'Luca',
+         lastName: 'Martin',
+         hashPassword: '5a9f19e8',
+      },
+      {
+         email: 'user.4@gexemple.com',
+         firstName: 'Luca',
+         lastName: 'Martin',
+         hashPassword: '5a9f19e8',
+      },
+      {
+         email: 'user.5@gexemple.com',
+         firstName: 'Luca',
+         lastName: 'Martin',
+         hashPassword: '5a9f19e8',
+      },
+      {
+         email: 'test',
+         firstName: 'Luca',
+         lastName: 'Martin',
+         hashPassword: '5a9f19e8',
+      },
+      {
+         email: 'user.4@gexemple.com',
+         firstName: 'Luca',
+         lastName: 'Martin',
+         hashPassword: '5a9f19e8',
+      },
+   ];
+
+   const offset = currentPage * usersPerPage;
+   const currentUsers = users.slice(offset, offset + usersPerPage);
+
+   const handlePageClick = ({ selected }) => {
+      setCurrentPage(selected);
+   };
+
    return (
       <section class="p-4">
          <div class="mx-auto max-w-screen-xl">
@@ -131,42 +315,15 @@ const AdminUserTable = () => {
                         </tr>
                      </thead>
                      <tbody>
-                        <TableUserRowData
-                           email="Email.1@gmail.com"
-                           firstName="Emma"
-                           lastName="Dupont"
-                           hashPassword="5f4dcc3b"
-                        />
-                        <TableUserRowData
-                           email="Email.2@gmail.com"
-                           firstName="Luca"
-                           lastName="Martin"
-                           hashPassword="5a9f19e8"
-                        />
-                        <TableUserRowData
-                           email="Email.3@gmail.com"
-                           firstName="Sarah"
-                           lastName="Johnson"
-                           hashPassword="0192023a"
-                        />
-                        <TableUserRowData
-                           email="Email.4@gmail.com"
-                           firstName="Alexendre"
-                           lastName="Lefebvre"
-                           hashPassword="b93a42e8"
-                        />
-                        <TableUserRowData
-                           email="Email.5@gmail.com"
-                           firstName="Emily"
-                           lastName="Walker"
-                           hashPassword="3b9fe123"
-                        />
-                        <TableUserRowData
-                           email="Email.6@gmail.com"
-                           firstName="Thomas"
-                           lastName="Garcia"
-                           hashPassword="8b87d19f"
-                        />
+                        {currentUsers.map((user, index) => (
+                           <TableUserRowData
+                              key={index}
+                              email={user.email}
+                              firstName={user.firstName}
+                              lastName={user.lastName}
+                              hashPassword={user.hashPassword}
+                           />
+                        ))}
                      </tbody>
                   </table>
                </div>
@@ -175,91 +332,23 @@ const AdminUserTable = () => {
                   aria-label="Table navigation"
                >
                   <span></span>
-                  <ul class="inline-flex items-stretch -space-x-px">
-                     <li>
-                        <a
-                           href="#"
-                           class="flex items-center justify-center h-full py-1.5 px-3 ml-0 text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700"
-                        >
-                           <span class="sr-only">Previous</span>
-                           <svg
-                              class="w-5 h-5"
-                              aria-hidden="true"
-                              fill="currentColor"
-                              viewbox="0 0 20 20"
-                              xmlns="http://www.w3.org/2000/svg"
-                           >
-                              <path
-                                 fill-rule="evenodd"
-                                 d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                                 clip-rule="evenodd"
-                              />
-                           </svg>
-                        </a>
-                     </li>
-                     <li>
-                        <a
-                           href="#"
-                           class="flex items-center justify-center text-sm z-10 py-2 px-3 leading-tight text-white bg-[#28c27a] border border-primary-300 hover:bg-[#59a96a]"
-                        >
-                           1
-                        </a>
-                     </li>
-                     <li>
-                        <a
-                           href="#"
-                           class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 "
-                        >
-                           2
-                        </a>
-                     </li>
-                     <li>
-                        <a
-                           href="#"
-                           aria-current="page"
-                           class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700"
-                        >
-                           3
-                        </a>
-                     </li>
-                     <li>
-                        <a
-                           href="#"
-                           class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700"
-                        >
-                           ...
-                        </a>
-                     </li>
-                     <li>
-                        <a
-                           href="#"
-                           class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700"
-                        >
-                           100
-                        </a>
-                     </li>
-                     <li>
-                        <a
-                           href="#"
-                           class="flex items-center justify-center h-full py-1.5 px-3 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700"
-                        >
-                           <span class="sr-only">Next</span>
-                           <svg
-                              class="w-5 h-5"
-                              aria-hidden="true"
-                              fill="currentColor"
-                              viewbox="0 0 20 20"
-                              xmlns="http://www.w3.org/2000/svg"
-                           >
-                              <path
-                                 fill-rule="evenodd"
-                                 d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                                 clip-rule="evenodd"
-                              />
-                           </svg>
-                        </a>
-                     </li>
-                  </ul>
+                  <div className="inline-flex items-stretch -space-x-px pagination">
+                     <ReactPaginate
+                        previousLabel={'Previous'}
+                        previousClassName="flex items-center justify-center h-full py-1.5 px-3 ml-0 text-gray-500 text-white bg-[#28c27a] rounded-l-lg border border-gray-300 hover:bg-[#59a96a]"
+                        nextLabel={'Next'}
+                        nextClassName="flex items-center justify-center h-full py-1.5 px-3 leading-tight text-white bg-[#28c27a] rounded-r-lg border border-gray-300 hover:bg-[#59a96a]"
+                        breakLabel={'...'}
+                        breakClassName="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700"
+                        pageCount={Math.ceil(users.length / usersPerPage)}
+                        pageClassName="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700"
+                        marginPagesDisplayed={2}
+                        pageRangeDisplayed={3}
+                        onPageChange={handlePageClick}
+                        containerClassName='pagination flex'
+                        activeClassName="activePage text-white pointer-events-none"
+                     />
+                  </div>
                </nav>
             </div>
          </div>
