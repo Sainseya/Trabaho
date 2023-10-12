@@ -12,8 +12,8 @@ const Home = () => {
             <UserCard />
             <JobCard />
          </div>
+
       </div>
    );
 };
-
 export default Home;
