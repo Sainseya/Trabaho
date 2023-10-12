@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { motion, useAnimate, useAnimation } from 'framer-motion';
-
 const AuthentificationMobile = () => {
    const [isPanelOpen, setIsPanelOpen] = useState(false);
 
