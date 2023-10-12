@@ -18,14 +18,7 @@ const CardStats = ({ totalNbr = 0, cardName = 'Total User', onClick }) => {
             </span>
          </div>
          <p className="mb-4 text-2xl sm:text-4xl font-bold text-dark">{totalNbr}</p>
-         <div className="flex justify-end">
-            <button
-               type="button"
-               className="items-center justify-center text-white bg-[#28c27a] hover:bg-[#59a96a] focus:outline-none font-medium rounded-lg text-base px-3.5 py-2 sm:px-5 sm:py-2.5 text-center "
-               onClick={onClick}
-            >
-               See Details
-            </button>
+         <div className="flex justify-end">           
          </div>
       </div>
    );

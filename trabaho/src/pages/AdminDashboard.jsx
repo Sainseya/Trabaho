@@ -17,6 +17,11 @@ const AdminDashboard = () => {
       setShowJobsTable(true);
    };
 
+   const hiddenTables = () => {
+      setShowUserTable(false);
+      setShowJobsTable(false);
+   };
+
    return (
       <div>
          <nav className="fixed top-0 z-50 w-full bg-[#e5ece9] border-b border-[#425154]">
@@ -79,9 +84,10 @@ const AdminDashboard = () => {
             <div className="h-full px-3 pb-4 overflow-y-auto bg-[#425154]">
                <ul className="space-y-4 font-medium">
                   <li>
-                     <a
-                        href="#"
-                        className="flex items-center p-2 text-white rounded-lg  hover:bg-[#28c27a] group"
+                     <button
+                        type="button"
+                        className="flex w-full items-center p-2 text-left text-white rounded-lg  hover:bg-[#28c27a] group"
+                        onClick={hiddenTables}
                      >
                         <svg
                            className="w-5 h-5 text-[#e5ece9] transition duration-75  group-hover:text-white"
@@ -94,12 +100,13 @@ const AdminDashboard = () => {
                            <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z" />
                         </svg>
                         <span className="ml-3">Dashboard</span>
-                     </a>
+                     </button>
                   </li>
                   <li>
-                     <a
-                        href="#"
-                        className="flex items-center p-2 text-white rounded-lg  hover:bg-[#28c27a] group"
+                     <button
+                        type="button"
+                        className="flex w-full items-center p-2 text-left text-white rounded-lg hover:bg-[#28c27a] group"
+                        onClick={toggleUserTable}
                      >
                         <svg
                            className="flex-shrink-0 w-5 h-5 text-[#e5ece9] transition duration-75  group-hover:text-white"
@@ -113,12 +120,13 @@ const AdminDashboard = () => {
                         <span className="flex-1 ml-3 whitespace-nowrap">
                            Users
                         </span>
-                     </a>
+                     </button>
                   </li>
                   <li>
-                     <a
-                        href="#"
-                        className="flex items-center p-2 text-white rounded-lg  hover:bg-[#28c27a] group"
+                     <button
+                        type="button"
+                        className="flex w-full items-center p-2 text-left text-white rounded-lg  hover:bg-[#28c27a] group"
+                        onClick={toggleJobsTable}
                      >
                         <svg
                            className="w-5 h-5 text-[#e5ece9] transition duration-75  group-hover:text-white"
@@ -133,7 +141,7 @@ const AdminDashboard = () => {
                         <span className="flex-1 ml-3 whitespace-nowrap">
                            Jobs
                         </span>
-                     </a>
+                     </button>
                   </li>
                </ul>
             </div>
@@ -143,10 +151,10 @@ const AdminDashboard = () => {
             <div className="p-4 pt-8 mt-14">
                <div className="grid grid-cols-2 gap-4 mb-4">
                   <div className="col-span-1">
-                     <CardStats cardName={'Total Users'} onClick={toggleUserTable} />
+                     <CardStats cardName={'Total Users'} />
                   </div>
                   <div className="col-span-1">
-                     <CardStats cardName={'Total Jobs'} onClick={toggleJobsTable}/>
+                     <CardStats cardName={'Total Jobs'} />
                   </div>
                </div>
             </div>
