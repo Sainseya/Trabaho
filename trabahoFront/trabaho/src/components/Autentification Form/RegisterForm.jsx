@@ -1,6 +1,6 @@
-import React, { components } from 'react';
+import React, { Component } from 'react';
 
-class RegisterForm extends components {
+class RegisterForm extends Component {
    constructor(props) {
       super(props);
       this.state = {
@@ -12,19 +12,29 @@ class RegisterForm extends components {
    }
 
    handleInputChange = (e) => {
-      this.setState({
-         [e.target.name]: e.target.value,
-      });
+      this.setState(
+         {
+            [e.target.name]: e.target.value,
+         },
+         () => {
+            if (
+               e.target.name === 'password' ||
+               e.target.name === 'confirmPassword'
+            ) {
+               this.validatePassword();
+            }
+         }
+      );
    };
 
    validatePassword = () => {
       const { password, confirmPassword } = this.state;
       if (password !== confirmPassword) {
-         this.state({
+         this.setState({
             passwordError: 'Password does not match',
          });
       } else {
-         this.state({
+         this.setState({
             passwordError: '',
          });
       }
@@ -33,6 +43,9 @@ class RegisterForm extends components {
    handleSubmit = (e) => {
       e.preventDefault();
 
+      const { email, password } = this.state;
+      window.alert('Email: ' + email + '\nPassword: ' + password);
+
       //* Envoyer les donnée au serveur ici
       //* Email
       //* Password
@@ -40,11 +53,11 @@ class RegisterForm extends components {
 
    render() {
       return (
-         <form action="" className="xl:w-96  mx-8 ">
+         <form onSubmit={this.handleSubmit} className="xl:w-96  mx-8">
             <div className="relative w-full mb-8 group">
                <input
                   type="email"
-                  name="floating_email"
+                  name="email"
                   id="floating_email_register"
                   className="block py-2.5 px-0 w-full text-sm text-black bg-transparent border-0 border-b-2 border-[#d9dedc] appearance-none focus:outline-none focus:ring-0 focus:border-[#216869] peer"
                   placeholder=" "
@@ -60,7 +73,7 @@ class RegisterForm extends components {
             <div className="relative w-full mb-8 group">
                <input
                   type="password"
-                  name="floating_password"
+                  name="password"
                   id="floating_password_register"
                   className="block py-2.5 px-0 w-full text-sm text-black bg-transparent border-0 border-b-2 border-[#d9dedc] appearance-none focus:outline-none focus:ring-0 focus:border-[#216869] peer"
                   placeholder=" "
@@ -76,11 +89,12 @@ class RegisterForm extends components {
             <div className="relative w-full mb-8 group">
                <input
                   type="password"
-                  name="repeat_password"
+                  name="confirmPassword"
                   id="floating_repeat_password"
                   className="block py-2.5 px-0 w-full text-sm text-black bg-transparent border-0 border-b-2 border-[#d9dedc] appearance-none focus:outline-none focus:ring-0 focus:border-[#216869] peer"
                   placeholder=" "
                   required
+                  onChange={this.handleInputChange}
                />
                <label
                   htmlFor="floating_repeat_password"
