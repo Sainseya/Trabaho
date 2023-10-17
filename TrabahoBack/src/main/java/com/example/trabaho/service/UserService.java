@@ -1,6 +1,6 @@
 package com.example.trabaho.service;
 
-import com.example.trabaho.model.User;
+import com.example.trabaho.model.Users;
 import com.example.trabaho.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
@@ -13,11 +13,15 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public List<User> findAll(){
+    public List<Users> findAll(){
         return userRepository.findAll();
     }
 
-    public User save(User user){
+    public Users save(Users user){
         return  userRepository.save(user);
     }
+
+/*    public User deleteUSer(User user){
+        return userRepository.deleteById(user);
+    }*/
 }

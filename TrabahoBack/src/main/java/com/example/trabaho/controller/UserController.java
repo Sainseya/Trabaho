@@ -1,6 +1,6 @@
 package com.example.trabaho.controller;
 
-import com.example.trabaho.model.User;
+import com.example.trabaho.model.Users;
 import com.example.trabaho.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,12 +16,12 @@ public class UserController {
     }
 
     @GetMapping("")
-    public List<User> findAll(){
+    public List<Users> findAll(){
         return userService.findAll();
 }
 
     @PostMapping("")
-    public User save(@RequestBody User user){
+    public Users save(@RequestBody Users user){
         return userService.save(user);
     }
 }
