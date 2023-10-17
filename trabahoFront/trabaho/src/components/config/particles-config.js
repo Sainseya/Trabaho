@@ -19,11 +19,6 @@ const particlesConfig = {
          polygon: {
             nb_sides: 5,
          },
-         image: {
-            src: 'img/github.svg',
-            width: 100,
-            height: 100,
-         },
       },
       opacity: {
          value: 1,
@@ -36,25 +31,25 @@ const particlesConfig = {
          },
       },
       size: {
-         value: 0,
-         random: true,
+         value: { min: 3, max: 5},
+         random: false,
          anim: {
             enable: true,
             speed: 0,
-            size_min: 87.90646751856023,
+            size_min: 10,
             sync: false,
          },
       },
       line_linked: {
-         enable: true,
-         distance: 63.13280775270874,
+         enable: false,
+         distance: 25,
          color: '#ffffff',
          opacity: 0.4,
-         width: 1,
+         width: 1.5,
       },
       move: {
          enable: true,
-         speed: 6.313280775270874,
+         speed: 5,
          direction: 'none',
          random: true,
          straight: false,
@@ -74,29 +69,21 @@ const particlesConfig = {
             enable: true,
             mode: 'grab',
          },
-         onclick: {
-            enable: true,
-            mode: 'repulse',
-         },
          resize: true,
       },
       modes: {
          grab: {
-            distance: 400,
+            distance: 250,
             line_linked: {
                opacity: 1,
             },
          },
          bubble: {
             distance: 400,
-            size: 40,
+            size: 50,
             duration: 2,
             opacity: 8,
             speed: 3,
-         },
-         repulse: {
-            distance: 200,
-            duration: 0.4,
          },
          push: {
             particles_nb: 4,
