@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import LoginForm from '../components/Autentification Form/LoginForm';
 import RegisterForm from '../components/Autentification Form/RegisterForm';
 
-const Authentification = () => {
+const AuthentificationPC = () => {
    const [isPanelOpen, setIsPanelOpen] = useState(false);
 
    const togglePanel = () => {
@@ -63,5 +63,100 @@ const Authentification = () => {
       </div>
    );
 };
+
+const AuthentificationMobile = () => {
+   const [isPanelOpen, setIsPanelOpen] = useState(false);
+
+   const switchPanel = () => {
+      setIsPanelOpen(!isPanelOpen);
+   };
+
+   return (
+      <div className="flex flex-col h-screen">
+         <div id="top_container" className="flex basis-1/3">
+            <div className="absolute h-full w-full -z-10 bg-[#216869]"></div>
+         </div>
+         <div id="bottom_container" className="flex flex-col basis-2/3">
+            <div
+               id="login_panel"
+               className={`absolute w-full h-2/3 bottom-0 ${
+                  isPanelOpen ? 'invisible' : 'visible'
+               }`}
+            >
+               <div className="flex flex-col items-center justify-evenly bg-[#e5ece9] h-full w-full rounded-t-3xl">
+                  <h2 className="mt-6 text-2xl">Welcome back</h2>
+                  <LoginForm />
+                  <div className="flex justify-center mb-12"></div>
+                  <div className="flex justify-center mb-6">
+                     <p>
+                        Does not have a account ?{' '}
+                        <a
+                           href=""
+                           onClick={(e) => {
+                              e.preventDefault();
+                              switchPanel();
+                           }}
+                           className="text-blue-600 hover:underline"
+                        >
+                           Sign in here
+                        </a>
+                     </p>
+                  </div>
+               </div>
+            </div>
+            <div
+               id="sign_in_panel"
+               className={`absolute w-full h-2/3 z-10 bottom-0 ${
+                  isPanelOpen ? 'visible' : 'invisible'
+               }`}
+            >
+               <div className="flex flex-col items-center justify-evenly h-full bg-[#e5ece9] rounded-t-3xl">
+                  <h2 className="mt-6 text-2xl">Welcome to Trabaho</h2>
+                  <RegisterForm />
+                  <div className="flex justify-center mb-6">
+                     <p>
+                        Already have a account ?{' '}
+                        <a
+                           href=""
+                           onClick={(e) => {
+                              e.preventDefault();
+                              switchPanel();
+                           }}
+                           className="text-blue-600 hover:underline"
+                        >
+                           Login here
+                        </a>
+                     </p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   );
+
+}
+
+const Authentification = () => {
+   const [isMobile, setIsMobile] = useState(false);
+
+   useEffect(() => {
+      const handleResize = () => {
+         setIsMobile(window.innerWidth < 640);
+      };
+
+      window.addEventListener('resize', handleResize);
+
+      return () => {
+         window.removeEventListener('resize', handleResize);
+      };
+
+   }, []);
+
+   return (
+      <div>
+         {isMobile ? <AuthentificationMobile /> : <AuthentificationPC />}
+      </div>
+   );
+}
 
 export default Authentification;
