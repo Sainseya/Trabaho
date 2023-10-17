@@ -44,6 +44,7 @@ class RegisterForm extends Component {
       e.preventDefault();
 
       const { email, password } = this.state;
+      //console.log("Email: ", email, " Password: ", password);
       window.alert('Email: ' + email + '\nPassword: ' + password);
 
       //* Envoyer les donnée au serveur ici
@@ -60,6 +61,8 @@ class RegisterForm extends Component {
                   name="email"
                   id="floating_email_register"
                   className="block py-2.5 px-0 w-full text-sm text-black bg-transparent border-0 border-b-2 border-[#d9dedc] appearance-none focus:outline-none focus:ring-0 focus:border-[#216869] peer"
+                  value={this.state.email}
+                  onChange={this.handleInputChange}
                   placeholder=" "
                   required
                />
@@ -76,6 +79,8 @@ class RegisterForm extends Component {
                   name="password"
                   id="floating_password_register"
                   className="block py-2.5 px-0 w-full text-sm text-black bg-transparent border-0 border-b-2 border-[#d9dedc] appearance-none focus:outline-none focus:ring-0 focus:border-[#216869] peer"
+                  value={this.state.password}
+                  onChange={this.handleInputChange}
                   placeholder=" "
                   required
                />
@@ -92,9 +97,10 @@ class RegisterForm extends Component {
                   name="confirmPassword"
                   id="floating_repeat_password"
                   className="block py-2.5 px-0 w-full text-sm text-black bg-transparent border-0 border-b-2 border-[#d9dedc] appearance-none focus:outline-none focus:ring-0 focus:border-[#216869] peer"
+                  value={this.state.confirmPassword}
+                  onChange={this.handleInputChange}
                   placeholder=" "
                   required
-                  onChange={this.handleInputChange}
                />
                <label
                   htmlFor="floating_repeat_password"
@@ -127,6 +133,7 @@ class RegisterForm extends Component {
                <button
                   type="submit"
                   className="w-full text-white bg-[#28c27a] hover:bg-[#59a96a] focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                  onClick={this.handleSubmit}
                >
                   Register new account
                </button>

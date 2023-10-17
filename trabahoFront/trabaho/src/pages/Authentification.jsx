@@ -11,22 +11,6 @@ const Authentification = () => {
 
    return (
       <div className="flex flex-row h-screen bg-white">
-         <style>
-            {`
-          .panel-transition {
-            transition: transform 0.3s ease;
-          }
-
-          .panel-open {
-            transform: translateX(-100%);
-          }
-
-          .panel-closed {
-            transform: translateX(0);
-          }
-        `}
-         </style>
-
          <div id="left_Container" className="flex-1 my-8 ml-8">
             <div className="flex flex-col items-center justify-evenly h-full bg-[#e5ece9] rounded-l-2xl">
                <h2 className="mt-12 text-2xl">Welcome to Trabaho</h2>
@@ -53,8 +37,8 @@ const Authentification = () => {
                className={`absolute h-full w-full z-10 bg-[#216869] ${
                   isPanelOpen ? '' : 'mr-8'
                } ${isPanelOpen ? 'rounded-l-2xl' : 'rounded-r-2xl'} ${
-                  isPanelOpen ? 'panel-open' : 'panel-closed'
-               } panel-transition`}
+                  isPanelOpen ? 'translate-x-[-100%]' : 'translate-x-0'
+               } transition-transform duration-300 ease-in-out`}
             ></div>
             <div className="flex flex-col items-center justify-evenly bg-[#e5ece9] h-full rounded-r-2xl">
                <h2 className="mt-12 text-2xl">Welcome back</h2>
