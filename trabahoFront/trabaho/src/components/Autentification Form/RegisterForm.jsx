@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import AxiosAPI from '../API/AxiosAPI';
 
 class RegisterForm extends Component {
    constructor(props) {
@@ -41,7 +41,7 @@ class RegisterForm extends Component {
       }
    };
 
-   handleSubmit = (e) => {
+   handleSubmit = async (e) => {
       e.preventDefault();
 
       const { email, password } = this.state;
@@ -52,16 +52,13 @@ class RegisterForm extends Component {
          password: this.state.password,
       };
 
-      axios
-         .post('http://localhost:8080/users', data)
-         .then((response) => {
-            //* Reponse serveur ici
-            console.log('Réponse du serveur: ', response.data);
-         })
-         .catch((error) => {
-            //* Gérer les erreur ici
-            console.error('Erreur lors de la requête: ', error);
-         });
+      try {
+         const response = await AxiosAPI.post('http://localhost:8080/users', data);
+
+         console.log("Réponse du serveur: ", response);
+      } catch (error) {
+         console.error("Erreur lors de la requête: ", error);
+      }
    };
 
    render() {
