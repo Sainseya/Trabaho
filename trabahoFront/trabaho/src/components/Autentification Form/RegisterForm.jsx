@@ -66,7 +66,7 @@ class RegisterForm extends Component {
 
    render() {
       return (
-         <form onSubmit={this.handleSubmit} className="md:w-72 mx-8">
+         <form onSubmit={this.handleSubmit} className="w-64 md:w-72 xl:w-96 md:xl:mx-8">
             <div className="relative w-full mb-8 group">
                <input
                   type="email"
@@ -120,27 +120,9 @@ class RegisterForm extends Component {
                >
                   Confirm password
                </label>
-               <p className="text-red-500 text-sm">{this.state.passwordError}</p>
-            </div>
-            <div className="flex items-start mb-8">
-               <div className="flex items-center h-5">
-                  <input
-                     id="terms"
-                     type="checkbox"
-                     value=""
-                     className="w-4 h-4"
-                     required
-                  />
-               </div>
-               <label
-                  for="terms"
-                  className="ml-2 text-sm font-medium text-black"
-               >
-                  I agree with the{' '}
-                  <a href="#" className="text-blue-600 hover:underline">
-                     terms and conditions
-                  </a>
-               </label>
+               <p className="text-red-500 text-sm">
+                  {this.state.passwordError}
+               </p>
             </div>
             <div className="flex justify-center mb-8">
                <button
@@ -149,27 +131,6 @@ class RegisterForm extends Component {
                   onClick={this.handleSubmit}
                >
                   Register new account
-               </button>
-            </div>
-            <div className="flex justify-center">
-               <button
-                  type="submit"
-                  className="w-full inline-flex items-center justify-center text-white bg-[#28c27a] hover:bg-[#59a96a] focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-               >
-                  <svg
-                     className="w-4 h-4 mr-2"
-                     aria-hidden="true"
-                     xmlns="http://www.w3.org/2000/svg"
-                     fill="currentColor"
-                     viewBox="0 0 18 19"
-                  >
-                     <path
-                        fillRule="evenodd"
-                        d="M8.842 18.083a8.8 8.8 0 0 1-8.65-8.948 8.841 8.841 0 0 1 8.8-8.652h.153a8.464 8.464 0 0 1 5.7 2.257l-2.193 2.038A5.27 5.27 0 0 0 9.09 3.4a5.882 5.882 0 0 0-.2 11.76h.124a5.091 5.091 0 0 0 5.248-4.057L14.3 11H9V8h8.34c.066.543.095 1.09.088 1.636-.086 5.053-3.463 8.449-8.4 8.449l-.186-.002Z"
-                        clipRule="evenodd"
-                     />
-                  </svg>
-                  Register with Google
                </button>
             </div>
          </form>
