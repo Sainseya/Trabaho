@@ -1,7 +1,7 @@
 const LoginForm = () => {
 
    return (
-      <form action="" className="xl:w-96 mx-8">
+      <form action="" className="w-64 md:w-72 mx-8">
          <div className="relative w-full mb-8 group">
             <input
                type="email"

@@ -66,7 +66,7 @@ class RegisterForm extends Component {
 
    render() {
       return (
-         <form onSubmit={this.handleSubmit} className="xl:w-96  mx-8">
+         <form onSubmit={this.handleSubmit} className="md:w-72 mx-8">
             <div className="relative w-full mb-8 group">
                <input
                   type="email"
