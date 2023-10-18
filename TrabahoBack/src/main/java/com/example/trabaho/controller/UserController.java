@@ -2,6 +2,7 @@ package com.example.trabaho.controller;
 
 import com.example.trabaho.model.Users;
 import com.example.trabaho.service.UserService;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,5 +24,10 @@ public class UserController {
     @PostMapping("")
     public Users save(@RequestBody Users user){
         return userService.save(user);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteUser(@PathVariable Long id){
+        userService.deleteUser(id);
     }
 }

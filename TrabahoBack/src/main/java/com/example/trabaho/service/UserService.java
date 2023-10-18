@@ -21,7 +21,9 @@ public class UserService {
         return  userRepository.save(user);
     }
 
-/*    public User deleteUSer(User user){
-        return userRepository.deleteById(user);
-    }*/
+
+    public void deleteUser(Long userId){
+        userRepository.deleteById(userId);
+    }
+
 }

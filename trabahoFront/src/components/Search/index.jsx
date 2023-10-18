@@ -7,7 +7,6 @@ import { GrCloudComputer } from 'react-icons/gr';
 import { PiMoneyThin } from 'react-icons/pi';
 import InputField from './inputFIeld';
 import Button from '../Button';
-import ParticlesBackground from '../particlesBackground';
 
 const Search = () => {
    const {
