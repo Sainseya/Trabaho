@@ -32,14 +32,6 @@ const AdminPI = () => {
             }
         }
 
-        // const deleteUser = async (userId) => {
-        //     try{
-        //         const response = await AxiosAPI.delete('http://localhost:8080/${userId}')
-        //     }
-        //     catch (error) {
-        //         console.error("Erreur lors de la requête : ", error);
-        //     }
-        // }
         getUsers();
         getJobs();
         // deleteUser(userId);

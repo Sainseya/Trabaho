@@ -7,3 +7,8 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+
+trabaho:
+  app:
+    jwtSecret: ======================YourSecretHere===========================
+    jwtExpirationMs: 86400000

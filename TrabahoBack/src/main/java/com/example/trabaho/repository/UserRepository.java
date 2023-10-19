@@ -4,8 +4,11 @@ import com.example.trabaho.model.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface UserRepository extends JpaRepository<Users, Long> {
-
-    /*User deleteById(User user);*/
+    Optional<Users> findByFirstname(String firstname);
+    Boolean existsByFirstname(String firstname);
+    Boolean existsByEmail(String email);
 }
