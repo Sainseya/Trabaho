@@ -1,19 +1,19 @@
-package com.example.trabaho.payload;
+package com.example.trabaho.payload.request;
 
 import jakarta.validation.constraints.NotBlank;
 
-public class SignupRequest {
+public class LoginRequest {
     @NotBlank
     private String firstname;
 
     @NotBlank
     private String password;
 
-    public String getFirstname() {
+    public String getUsername() {
         return firstname;
     }
 
-    public void setFirstname(String firstname) {
+    public void setUsername(String username) {
         this.firstname = firstname;
     }
 
