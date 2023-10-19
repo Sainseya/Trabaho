@@ -7,14 +7,19 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "users")
+@Table(name = "users",uniqueConstraints = {
+        @UniqueConstraint(columnNames = "firstname"),
+        @UniqueConstraint(columnNames = "email")
+})
 public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,9 +31,18 @@ public class Users {
     private String phone;
     private String password;
 
+    public Users(String firstname, String email, String password) {
+        this.firstname = firstname;
+        this.email = email;
+        this.password = password;
+    }
+
     @OneToMany(mappedBy = "user")
     @JsonIgnore
     private List<JobsApplication> jobsApplications;
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles = new HashSet<>();
 
 }

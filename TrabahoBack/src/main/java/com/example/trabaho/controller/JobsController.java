@@ -1,7 +1,6 @@
 package com.example.trabaho.controller;
 
 import com.example.trabaho.model.Jobs;
-import com.example.trabaho.model.Users;
 import com.example.trabaho.service.JobsService;
 import org.springframework.web.bind.annotation.*;
 
