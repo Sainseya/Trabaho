@@ -10,7 +10,7 @@ const Home = () => {
          {/* <ParticlesBackground /> */}
          <Header />
          <Search />
-         <div className="flex flex-rows w-full px-24 gap-5 mt-60">
+         <div className="flex flex-rows w-full md:px-24 gap-5 mt-60">
             <UserCard />
             <JobCard />
          </div>

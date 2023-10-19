@@ -12,10 +12,14 @@ const JobDescription = ({ job, company }) => {
               alt={`logo ${company.name}`}
             />
             <div>
-              <h2 className="font-semibold">{company.name}</h2>
-              <div className="flex flex-row gap-2">
-                <p className="text-sm font-bold text-emeraude">{job.periode}</p>
-                <p className="text-sm font-bold text-amber-700">{job.where}</p>
+              <h2 className="text-lg font-semibold">{job.role}</h2>
+              <div className="flex flex-row flex-warp">
+                <span className="inline-block w-20 text-center font-semibold text-sm px-2 py-0.5 rounded-xl bg-blanc_creme text-emeraude mr-1 mb-1">
+                  {job.periode}
+                </span>
+                <span className="inline-block w-20 text-center font-semibold text-sm px-2 py-0.5 rounded-xl bg-blanc_creme text-amber-700 mr-1 mb-1">
+                  {job.where}
+                </span>
               </div>
             </div>
           </div>
@@ -25,7 +29,7 @@ const JobDescription = ({ job, company }) => {
         </div>
       </div>
       <div id="right" className="flex-1 flex-col pl-2">
-        <div className="flex flex-row justify-between items-center mb-6">
+        <div className="flex flex-row justify-between items-start mb-6">
           <p className="text-lg font-bold">Missions :</p>
           <Button name="Apply" width={"6rem"} height={"3rem"} onClick={""} />
         </div>

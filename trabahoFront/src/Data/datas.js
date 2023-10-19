@@ -13,7 +13,7 @@ export const jobDetails = [
             where: 'On Site',
             periode: 'Full-time',
             salary: 50,
-            localization: 'San Francisco',
+            localization: 'New York',
             postHour: '10',
          },
          {
