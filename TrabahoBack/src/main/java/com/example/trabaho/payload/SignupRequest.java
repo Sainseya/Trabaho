@@ -1,5 +1,7 @@
 package com.example.trabaho.payload;
-import javax.validation.constraints.NotBlank;
+
+import jakarta.validation.constraints.NotBlank;
+
 public class SignupRequest {
     @NotBlank
     private String username;
