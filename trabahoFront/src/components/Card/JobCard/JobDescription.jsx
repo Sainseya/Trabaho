@@ -20,12 +20,7 @@ const JobDescription = ({ job, company }) => {
             </div>
           </div>
           <div className="">
-            <p className="text-sm">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga
-              consequatur vitae quos rerum facilis 
-              accusantium in placeat cum voluptatum dolores, totam,
-              accusantium in placeat cum voluptatum ullam aliquam. Libero,
-            </p>
+            <p className="text-sm">{job.description}</p>
           </div>
         </div>
       </div>
@@ -35,11 +30,7 @@ const JobDescription = ({ job, company }) => {
           <Button name="Apply" width={"6rem"} height={"3rem"} onClick={""} />
         </div>
         <div>
-          <p className="text-sm">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero, quam
-            iusto veniam soluta aut laboriosam quidem suscipit unde beatae
-            quisquam rem provident fuga fugiat, voluptas ex. Adipisci
-          </p>
+          <p className="text-sm">{job.expectetion}</p>
         </div>
       </div>
     </div>

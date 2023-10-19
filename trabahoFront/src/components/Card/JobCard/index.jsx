@@ -5,48 +5,52 @@ import JobDescription from "./JobDescription";
 
 const JobCard = () => {
   const [selectedJob, setSelectedJob] = useState(null);
-  const [descriptionVisible, setDescriptionVisible] = useState(false);
 
-  const handleJobSelection = (index) => {
-    if (descriptionVisible && selectedJob === index) {
+  const handleJobSelection = (companyId, jobId) => {
+    if (
+      selectedJob &&
+      selectedJob.companyId === companyId &&
+      selectedJob.jobId === jobId
+    ) {
+      //? Si la même carte est cliquée de nouveau, masquez la description
       setSelectedJob(null);
-      setDescriptionVisible(false);
     } else {
-      setSelectedJob(index);
-      setDescriptionVisible(true);
+      setSelectedJob({ companyId, jobId });
     }
   };
 
   return (
-    <div className="flex flex-row flex-wrap pl-80 gap-9 ">
-      {jobDetails.map((company, companyId) =>
-        company.jobs.map((job, jobId) => (
-          <div key={jobId}>
-            <Card
-              job={job}
-              company={company}
-              onClick={() => handleJobSelection(companyId * 10 + jobId)} // Utilisation d'un identifiant unique pour chaque emploi
-            />
-            {selectedJob === companyId * 10 + jobId && descriptionVisible && (
-              <JobDescription job={job} company={company} />
-            )}
-          </div>
-        ))
-      )}
+    <div className="pl-80 gap-9">
+      <div className="grid grid-cols-3 gap-4">
+        {jobDetails.map((company, companyId) =>
+          company.jobs.map((job, jobId) => (
+            <div className="" key={jobId}>
+              <Card
+                job={job}
+                company={company}
+                onClick={() => handleJobSelection(companyId, jobId)}
+              />
+              {selectedJob &&
+                selectedJob.companyId === companyId &&
+                selectedJob.jobId === jobId && (
+                  <div className="col-span-3">
+                    <JobDescription
+                      job={
+                        jobDetails[selectedJob.companyId].jobs[
+                          selectedJob.jobId
+                        ]
+                      }
+                      company={jobDetails[selectedJob.companyId]}
+                    />
+                  </div>
+                )}
+            </div>
+          ))
+          
+        )}
+      </div>
     </div>
   );
 };
 
 export default JobCard;
-
-// {jobDetails.map((job, id) => (
-//    <div key={id}>
-//      <Card
-//      job={job}
-//      onClick={() => handleJobSelection(id)}
-//      />
-//      {selectedJob === id && (
-//        <JobDescription job={job}/>
-//      )}
-//    </div>
-//  ))}
