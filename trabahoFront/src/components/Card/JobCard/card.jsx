@@ -14,7 +14,7 @@ const Card = ({ job, company, onClick }) => {
               alt={`logo ${company.name}`}
             />
             <div>
-              <h2 className="font-semibold">{company.name}</h2>
+              <h2 className="font-semibold">{job.role}</h2>
               <div className="flex flex-row gap-2">
                 <p className="text-sm font-bold text-emeraude">{job.periode}</p>
                 <p className="text-sm font-bold text-amber-700">{job.where}</p>
