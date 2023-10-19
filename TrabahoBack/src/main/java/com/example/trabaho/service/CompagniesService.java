@@ -15,6 +15,7 @@ public class CompagniesService {
     }
 
     public List<Compagnies> findAll(){
+
         return compagniesRepository.findAll();
     }
 

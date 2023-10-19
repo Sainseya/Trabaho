@@ -1,160 +1,24 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import FilterType from './FilterType';
 import TableUserRowData from './TableUserRowData';
+import get from '../../API/get';
 
 const AdminUserTable = () => {
    const [currentPage, setCurrentPage] = useState(0);
    const usersPerPage = 6;
 
-   const users = [
-      //User data
-      {
-         email: 'user.1@gexemple.com',
-         firstName: 'John',
-         lastName: 'Doe',
-         hashPassword: '5f4dcc3b',
-      },
-      {
-         email: 'user.2@gexemple.com',
-         firstName: 'Luca',
-         lastName: 'Martin',
-         hashPassword: '5a9f19e8',
-      },
-      {
-         email: 'user.3@gexemple.com',
-         firstName: 'Luca',
-         lastName: 'Martin',
-         hashPassword: '5a9f19e8',
-      },
-      {
-         email: 'user.4@gexemple.com',
-         firstName: 'Luca',
-         lastName: 'Martin',
-         hashPassword: '5a9f19e8',
-      },
-      {
-         email: 'user.5@gexemple.com',
-         firstName: 'Luca',
-         lastName: 'Martin',
-         hashPassword: '5a9f19e8',
-      },
-      {
-         email: 'user.6@gexemple.com',
-         firstName: 'Luca',
-         lastName: 'Martin',
-         hashPassword: '5a9f19e8',
-      },
-      {
-         email: 'user.4@gexemple.com',
-         firstName: 'Luca',
-         lastName: 'Martin',
-         hashPassword: '5a9f19e8',
-      },
-      {
-         email: 'user.1@gexemple.com',
-         firstName: 'John',
-         lastName: 'Doe',
-         hashPassword: '5f4dcc3b',
-      },
-      {
-         email: 'test',
-         firstName: 'Luca',
-         lastName: 'Martin',
-         hashPassword: '5a9f19e8',
-      },
-      {
-         email: 'user.3@gexemple.com',
-         firstName: 'Luca',
-         lastName: 'Martin',
-         hashPassword: '5a9f19e8',
-      },
-      {
-         email: 'user.4@gexemple.com',
-         firstName: 'Luca',
-         lastName: 'Martin',
-         hashPassword: '5a9f19e8',
-      },
-      {
-         email: 'user.5@test.com',
-         firstName: 'Luca',
-         lastName: 'Martin',
-         hashPassword: '5a9f19e8',
-      },
-      {
-         email: 'user.6@gexemple.com',
-         firstName: 'Luca',
-         lastName: 'Martin',
-         hashPassword: '5a9f19e8',
-      },
-      {
-         email: 'test',
-         firstName: 'Luca',
-         lastName: 'Martin',
-         hashPassword: '5a9f19e8',
-      },
-      {
-         email: 'user.1@gexemple.com',
-         firstName: 'John',
-         lastName: 'Doe',
-         hashPassword: '5f4dcc3b',
-      },
-      {
-         email: 'user.2@gexemple.com',
-         firstName: 'Luca',
-         lastName: 'Martin',
-         hashPassword: '5a9f19e8',
-      },
-      {
-         email: 'test',
-         firstName: 'Luca',
-         lastName: 'Martin',
-         hashPassword: '5a9f19e8',
-      },
-      {
-         email: 'user.4@gexemple.com',
-         firstName: 'Luca',
-         lastName: 'Martin',
-         hashPassword: '5a9f19e8',
-      },
-      {
-         email: 'user.5@gexemple.com',
-         firstName: 'Luca',
-         lastName: 'Martin',
-         hashPassword: '5a9f19e8',
-      },
-      {
-         email: 'user.6@gexemple.com',
-         firstName: 'Luca',
-         lastName: 'Martin',
-         hashPassword: '5a9f19e8',
-      },
-      {
-         email: 'testtest',
-         firstName: 'Luca',
-         lastName: 'Martin',
-         hashPassword: '5a9f19e8',
-      },
-      {
-         email: 'user.1@gexemple.com',
-         firstName: 'John',
-         lastName: 'Doe',
-         hashPassword: '5f4dcc3b',
-      },
-      {
-         email: 'user.2@gexemple.com',
-         firstName: 'Luca',
-         lastName: 'Martin',
-         hashPassword: '5a9f19e8',
-      },
-   ];
+   const data = get();
+
+   // Access the values from the returned object
+   const { users } = data;
 
    const offset = currentPage * usersPerPage;
-   const currentUsers = users.slice(offset, offset + usersPerPage);
+   // const currentUsers = users.slice(offset, offset + usersPerPage);
 
    const handlePageClick = ({ selected }) => {
       setCurrentPage(selected);
-   };
+   }
 
    return (
       <section class="p-4">
@@ -285,13 +149,14 @@ const AdminUserTable = () => {
                         </tr>
                      </thead>
                      <tbody>
-                        {currentUsers.map((user, index) => (
+                        {users.map((user, userId) => (
                            <TableUserRowData
-                              key={index}
+                              key={userId}
+                              userId={user.userId}
                               email={user.email}
-                              firstName={user.firstName}
-                              lastName={user.lastName}
-                              hashPassword={user.hashPassword}
+                              firstName={user.firstname}
+                              lastName={user.lastname}
+                              password={user.password}
                            />
                         ))}
                      </tbody>

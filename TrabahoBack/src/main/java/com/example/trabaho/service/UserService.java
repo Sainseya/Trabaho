@@ -21,9 +21,18 @@ public class UserService {
         return  userRepository.save(user);
     }
 
-
     public void deleteUser(Long userId){
         userRepository.deleteById(userId);
+    }
+
+    public Users update(Users user, Long userId)throws Error {
+        Users existingUser = userRepository.findById(userId).orElseThrow(() -> new Error("User not found"));
+        existingUser.setLastname(user.getLastname());
+        existingUser.setFirstname(user.getFirstname());
+        existingUser.setEmail(user.getEmail());
+        existingUser.setPhone(user.getPhone());
+        existingUser.setPassword(user.getPassword());
+        return userRepository.save(existingUser);
     }
 
 }

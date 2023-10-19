@@ -30,4 +30,10 @@ public class UserController {
     public void deleteUser(@PathVariable Long id){
         userService.deleteUser(id);
     }
+
+    @PutMapping("/{userId}")
+    public Users update(@RequestBody Users user, @PathVariable Long userId) throws Error {
+        return userService.update(user,userId);
+    }
+
 }

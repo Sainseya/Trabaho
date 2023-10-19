@@ -1,4 +1,5 @@
 const CardStats = ({ totalNbr = 0, cardName = 'Total User'}) => {
+
    return (
       <div className="mx-auto max-w-lg p-6 bg-white border border-gray-200 rounded-lg shadow">
          <div className="flex justify-between items-center">
