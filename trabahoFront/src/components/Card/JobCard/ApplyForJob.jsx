@@ -13,6 +13,10 @@ class ApplyForJob extends Component {
     };
   }
 
+  closeThisPanel = () => {
+    this.props.onClose();
+  };
+
   handleInputChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
@@ -35,14 +39,20 @@ class ApplyForJob extends Component {
 
     //? Methode API here ...
 
-    this.props.onClose();
+    this.closeThisPanel();
   };
 
   render() {
     return (
-        <div className="fixed inset-0 w-screen h-screen flex items-center justify-center z-20 bg-blanc_creme bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10">
-        <div className=" bg-slate-50 w-2/4 p-6 rounded-lg shadow-md">
-          <p className="flex justify-center items-center pb-4 font-semibold text-lg">
+      <div className="fixed inset-0 w-screen h-screen flex items-center justify-center z-20 bg-blanc_creme bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10">
+        <div className="relative bg-slate-50 w-2/4 p-6 rounded-lg shadow-md">
+          <button
+            className="absolute top-3 right-3 w-8 h-8 bg-red-600 border-2 rounded-full flex justify-center items-center"
+            onClick={this.closeThisPanel}
+          >
+            <p className="text-white font-bold text-center">X</p>
+          </button>
+          <p className="flex justify-center items-center p-4 font-semibold text-lg">
             Enter your information for this job
           </p>
           <form onSubmit={this.handleSubmit}>
@@ -100,7 +110,7 @@ class ApplyForJob extends Component {
                 htmlFor="floating_phone"
                 className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 origin-[0] peer-focus:left-0 peer-focus:text-[#216869] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
               >
-                Phone number (123-456-7890)
+                Phone number
               </label>
             </div>
             <div className="relative z-0 w-full mb-6 group">
@@ -122,18 +132,13 @@ class ApplyForJob extends Component {
               </label>
             </div>
             <div className="flex justify-center items-center">
-              <Button
-                name="Apply for this job"
-                width="12rem"
-                height="3rem"
-              />
+              <Button name="Apply" width="12rem" height="3rem" />
             </div>
           </form>
         </div>
       </div>
     );
   }
-
 }
 
 export default ApplyForJob;
