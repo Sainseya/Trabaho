@@ -17,7 +17,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "users",uniqueConstraints = {
-        @UniqueConstraint(columnNames = "firstname"),
+        @UniqueConstraint(columnNames = "username"),
         @UniqueConstraint(columnNames = "email")
 })
 public class Users {
@@ -25,14 +25,14 @@ public class Users {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
     private Long userId;
-    private String firstname;
+    private String username;
     private String lastname;
     private String email;
     private String phone;
     private String password;
 
-    public Users(String firstname, String email, String password) {
-        this.firstname = firstname;
+    public Users(String username, String email, String password) {
+        this.username = username;
         this.email = email;
         this.password = password;
     }

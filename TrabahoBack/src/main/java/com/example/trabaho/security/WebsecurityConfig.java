@@ -3,7 +3,7 @@ package com.example.trabaho.security;
 
 import com.example.trabaho.security.jwt.AuthEntryPointJwt;
 import com.example.trabaho.security.jwt.AuthTokenFilter;
-import com.example.trabaho.security.jwt.JwUtils;
+import com.example.trabaho.security.jwt.JwtUtils;
 import com.example.trabaho.security.services.UserDetailsServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,9 +24,9 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class WebsecurityConfig {
     UserDetailsServiceImpl userDetailsService;
     AuthEntryPointJwt unauthorizedHandler;
-    JwUtils jwUtils;
+    JwtUtils jwUtils;
 
-    public WebsecurityConfig(UserDetailsServiceImpl userDetailsService, AuthEntryPointJwt unauthorizedHandler, JwUtils jwUtils) {
+    public WebsecurityConfig(UserDetailsServiceImpl userDetailsService, AuthEntryPointJwt unauthorizedHandler, JwtUtils jwUtils) {
         this.userDetailsService = userDetailsService;
         this.unauthorizedHandler = unauthorizedHandler;
         this.jwUtils = jwUtils;
@@ -57,13 +57,13 @@ public class WebsecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
+    @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.csrf(AbstractHttpConfigurer::disable)
+        http.csrf(AbstractHttpConfigurer::disable).cors(AbstractHttpConfigurer::disable)
                 .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth ->
                         auth.requestMatchers("/api/auth/**").permitAll()
-                                .requestMatchers("/api/test/**").permitAll()
                                 .anyRequest().authenticated()
                 );
 

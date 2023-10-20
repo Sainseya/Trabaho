@@ -9,7 +9,7 @@ import com.example.trabaho.payload.response.JwtResponse;
 import com.example.trabaho.payload.response.MessageResponse;
 import com.example.trabaho.repository.RoleRepository;
 import com.example.trabaho.repository.UserRepository;
-import com.example.trabaho.security.jwt.JwUtils;
+import com.example.trabaho.security.jwt.JwtUtils;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -35,9 +35,9 @@ public class AuthService {
 
     private final PasswordEncoder encoder;
 
-    private final JwUtils jwtUtils;
+    private final JwtUtils jwtUtils;
 
-    public AuthService(AuthenticationManager authenticationManager, UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder encoder, JwUtils jwtUtils) {
+    public AuthService(AuthenticationManager authenticationManager, UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder encoder, JwtUtils jwtUtils) {
         this.authenticationManager = authenticationManager;
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
@@ -51,6 +51,7 @@ public class AuthService {
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = jwtUtils.generateJwtToken(authentication);
+        System.out.println(jwt);
 
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
         List<String> roles = userDetails.getAuthorities().stream()
@@ -58,14 +59,14 @@ public class AuthService {
                 .collect(Collectors.toList());
 
         return ResponseEntity.ok(new JwtResponse(jwt,
-                userDetails.getId(),
+                userDetails.getUserId(),
                 userDetails.getUsername(),
                 userDetails.getEmail(),
                 roles));
     }
 
     public ResponseEntity<MessageResponse> signup(SignupRequest signUpRequest){
-        if (userRepository.existsByFirstname(signUpRequest.getFirstname())) {
+        if (userRepository.existsByUsername(signUpRequest.getUsername())) {
             return ResponseEntity
                     .badRequest()
                     .body(new MessageResponse("Error: Username is already taken!"));
@@ -78,7 +79,7 @@ public class AuthService {
         }
 
         // Create new user's account
-        Users user = new Users(signUpRequest.getFirstname(),
+        Users user = new Users(signUpRequest.getUsername(),
                 signUpRequest.getEmail(),
                 encoder.encode(signUpRequest.getPassword()));
 
