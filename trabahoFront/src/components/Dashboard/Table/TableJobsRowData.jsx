@@ -1,9 +1,15 @@
+import deleteUser from '../../API/delete';
+
+
 const TableJobsRowData = ({
-   name = 'Job1',
-   tag = 'default',
-   company = 'defaultCompany',
-   applicants = 0,
+   userId,
+   name,
+   tag,
+   company,
+   applicants,
 }) => {
+
+
    return (
       <tr class="border-b">
          <th

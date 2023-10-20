@@ -19,7 +19,7 @@ public class Compagnies {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "compagnies_id")
-    private Long compagniesId; // Assurez-vous que le type de données correspond au champ dans la base de données
+    private Long compagniesId;
     private String compagnyName;
     private String location;
 
