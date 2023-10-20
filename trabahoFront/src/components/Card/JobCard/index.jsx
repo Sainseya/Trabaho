@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Card from "./Card";
 import { jobDetails } from "../../../Data/datas";
 import JobDescription from "./JobDescription";
@@ -23,13 +23,13 @@ const JobCard = () => {
   const getGridRow = () => {
     if (selectedJob) {
       if (window.innerWidth <= 768) {
-        return `${selectedJob.jobId + 2} / span 1`;
+        return `${selectedJob.jobId + 2} / span 1`; //? S'il y a 1 colonne
       } 
       else if (window.innerWidth <= 1280) {
-        return `${2 + Math.floor(selectedJob.jobId / 2)} / span 1`;
+        return `${2 + Math.floor(selectedJob.jobId / 2)} / span 1`; //? S'il y a 2 colonnes
       } 
       else {
-        return `${2 + Math.floor(selectedJob.jobId / 3)} / span 1`;
+        return `${2 + Math.floor(selectedJob.jobId / 3)} / span 1`; //? S'il y a 3 colonnes
       }
     }
   };
