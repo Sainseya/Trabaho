@@ -2,55 +2,14 @@ import React, { useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import FilterType from './FilterType';
 import TableJobsRowData from './TableJobsRowData';
+import get from '../../API/get';
 
 const AdminJobsTable = () => {
    const [currentPage, setCurrentPage] = useState(0);
    const jobsPerPage = 6;
 
-   const jobs = [
-      {
-         name: 'Front-End Dev',
-         tags: 'On site',
-         company: 'Nacon',
-         applicants: 2,
-      },
-      {
-         name: 'DevOps',
-         tags: 'On site',
-         company: 'Tales',
-         applicants: 0,
-      },
-      {
-         name: 'Consulting',
-         tags: 'Remote',
-         company: 'Alten',
-         applicants: 1,
-      },
-      {
-         name: 'Full-Stack',
-         tags: 'On site',
-         company: 'Ubisoft',
-         applicants: 4,
-      },
-      {
-         name: 'Back-end',
-         tags: 'Remote',
-         company: 'Alten',
-         applicants: 5,
-      },
-      {
-         name: 'Project Manager',
-         tags: 'Remote',
-         company: 'Alten',
-         applicants: 0,
-      },
-      {
-         name: 'Developper',
-         tags: 'On site',
-         company: 'Ubisoft',
-         applicants: 1,
-      },
-   ];
+   const data = get();
+   const { jobs } = data;
 
    const offset = currentPage * jobsPerPage;
    const currentJobs = jobs.slice(offset, offset + jobsPerPage);
@@ -59,6 +18,7 @@ const AdminJobsTable = () => {
       setCurrentPage(selected);
    };
 
+   
    return (
       <section class="p-4">
          <div class="mx-auto max-w-screen-xl">
@@ -188,12 +148,12 @@ const AdminJobsTable = () => {
                         </tr>
                      </thead>
                      <tbody>
-                        {currentJobs.map((job, index) => (
+                        {jobs.map((job, jobsId) => (
                            <TableJobsRowData
-                              key={index}
-                              name={job.name}
+                              key={jobsId}
+                              name={job.title}
                               tag={job.tags}
-                              company={job.company}
+                              company={job.compagnyName}                                                     
                               applicants={job.applicants}
                            />
                         ))}

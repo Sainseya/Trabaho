@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import CardStats from '../components/Dashboard/CardStats';
 import AdminUserTable from '../components/Dashboard/Table/AdminUserTable';
 import AdminJobsTable from '../components/Dashboard/Table/AdminJobsTable';
+import get from '../components/API/get';
 
 const AdminDashboard = () => {
-   1;
+
    const [showUserTable, setShowUserTable] = useState(false);
    const [showJobsTable, setShowJobsTable] = useState(false);
 
@@ -22,6 +23,12 @@ const AdminDashboard = () => {
       setShowUserTable(false);
       setShowJobsTable(false);
    };
+
+
+   const data = get();
+
+   // Access the values from the returned object
+   const { numberOfUsers, numberOfJobs } = data;
 
    return (
       <div>
@@ -152,10 +159,10 @@ const AdminDashboard = () => {
             <div className="p-4 pt-8 mt-14">
                <div className="grid grid-cols-2 gap-4 mb-4">
                   <div className="col-span-1">
-                     <CardStats cardName={'Total Users'} />
+                     <CardStats cardName={'Total Users'} totalNbr={numberOfUsers} />
                   </div>
                   <div className="col-span-1">
-                     <CardStats cardName={'Total Jobs'} />
+                     <CardStats cardName={'Total Jobs'} totalNbr={numberOfJobs} />
                   </div>
                </div>
             </div>

@@ -1,7 +1,7 @@
 package com.example.trabaho.controller;
 
+import com.example.trabaho.dto.JobsDTO;
 import com.example.trabaho.model.Jobs;
-import com.example.trabaho.model.Users;
 import com.example.trabaho.service.JobsService;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +17,7 @@ public class JobsController {
     }
 
     @GetMapping("")
-    public List<Jobs> findAll(){
+    public List<JobsDTO> findAll(){
         return jobsService.findAll();
     }
 
