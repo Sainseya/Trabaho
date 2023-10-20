@@ -1,17 +1,15 @@
-import Experiences from './experiences';
-import SkillsCard from './skillsCard';
-import User from './user';
+import Experiences from "./experiences";
+import SkillsCard from "./skillsCard";
+import User from "./user";
 
 const userCard = () => {
-   return (
-      <div>
-         <div className=" flex-col w-80 h-96 gap-5 fixed hidden lg:flex">
-            <User />
-            <SkillsCard />
-            <Experiences />
-         </div>
-      </div>
-   );
+  return (
+    <div className=" flex-col lg:w-64 xl:w-80 gap-5 pr-4 fixed hidden lg:flex">
+      <User />
+      <SkillsCard />
+      <Experiences />
+    </div>
+  );
 };
 
 export default userCard;

@@ -22,16 +22,20 @@ const JobCard = () => {
   //? Calculez la ligne en fonction de l'indice de l'offre d'emploi
   const getGridRow = () => {
     if (selectedJob) {
-      if (window.innerWidth <= 1280) {
+      if (window.innerWidth <= 768) {
+        return `${selectedJob.jobId + 2} / span 1`;
+      } 
+      else if (window.innerWidth <= 1280) {
         return `${2 + Math.floor(selectedJob.jobId / 2)} / span 1`;
-      } else {
+      } 
+      else {
         return `${2 + Math.floor(selectedJob.jobId / 3)} / span 1`;
       }
     }
   };
 
   return (
-    <div className="lg:pl-80 flex-1 items-center gap-9">
+    <div className="lg:pl-64 xl:pl-80 flex-1 items-center gap-9">
       <div className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4">
         {jobDetails.map((company, companyId) =>
           company.jobs.map((job, jobId) => (

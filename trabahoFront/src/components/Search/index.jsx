@@ -20,21 +20,21 @@ const Search = () => {
    };
 
    return (
-      <div className="w-full px-0 sm:px-2 md:px-24 fixed sm:top-[4.9rem] top-9">
-         <div className="hidden sm:block sm:h-2 sm:w-full w-4 sm:px-40 px-3 bg-[#e5ece9] "></div>
-         <div className="flex sm:w-full lg:px-3 xl:px-8 md:px-12 px-0 bg-emeraude h-14 sm:h-32 justify-normal sm:justify-center items-center rounded-none sm:rounded-md">
+      <div className="w-full px-4 sm:px-8 md:px-16 lg:px-20 fixed sm:top-[4.9rem] top-10">
+         <div className="block h-4 w-full bg-[#e5ece9] "></div>
+         <div className="flex w-full bg-emeraude h-32 justify-center items-center rounded-md">
             <form
-               className="flex flex-col flex-wrap sm:flex-row items-center gap-2 justify-center"
+               className="flex flex-col flex-1 flex-wrap lg:px-12 md:px-8 sm:px-6 px-4 sm:flex-row items-center gap-4 justify-center"
                onSubmit={handleSubmit(onSubmit)}
             >
                <InputField
                   icon={<LiaSearchSolid size={20} />}
-                  placeholder="Job Title"
+                  placeholder="Search a job"
                   registerKey="jobTitle"
                   register={register}
                   errors={errors}
                />
-               <InputField
+               {/* <InputField
                   icon={<MdOutlinePlace size={20} />}
                   placeholder="Location"
                   registerKey="location"
@@ -95,7 +95,7 @@ const Search = () => {
                      <option value="60 - 70">60k - 70k</option>
                      <option value="70 - 80">70k - 80k</option>
                   </select>
-               </div>
+               </div> */}
 
                <Button
                   height="2.75rem"
