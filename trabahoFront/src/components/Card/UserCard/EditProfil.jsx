@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import AxiosAPI from "../../API/AxiosAPI";
 import Button from "../../Button";
 
-
-
 class EditProfil extends Component {
   constructor(props) {
     super(props);
@@ -91,7 +89,7 @@ class EditProfil extends Component {
             <div className="relative z-0 w-full mb-6 group">
               <input
                 type="tel"
-                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                pattern="[0-9]{10}"
                 name="phoneNumber"
                 id="floating_phone"
                 className="block py-2.5 px-0 w-full text-sm text-black bg-transparent border-0 border-b-2 border-[#d9dedc] appearance-none focus:outline-none focus:ring-0 focus:border-[#216869] peer"
@@ -106,7 +104,7 @@ class EditProfil extends Component {
                 Phone number (123-456-7890)
               </label>
             </div>
-            <div className="relative z-0 w-full mb-6 group">
+            {/* <div className="relative z-0 w-full mb-6 group">
               <input
                 type="email"
                 name="email"
@@ -122,13 +120,12 @@ class EditProfil extends Component {
               >
                 Email address
               </label>
-            </div>
+            </div> */}
             <div className="flex justify-center items-center">
               <Button
                 name="Save"
                 width="7rem"
-                height="2.5rem"
-                onClick={this.handleSubmit}
+                height="3rem"
               />
             </div>
           </form>
