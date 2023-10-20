@@ -1,29 +1,68 @@
+import { useState, useRef } from "react";
+import { useNavigate } from 'react-router-dom';
+import AuthService from "../../services/auth.service";
+
 const LoginForm = () => {
+   let navigate = useNavigate();
+
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
+
+  const onChangeUsername = (e) => {
+   const username = e.target.value;
+   setUsername(username);
+   };
+
+ const onChangePassword = (e) => {
+   const password = e.target.value;
+   setPassword(password);
+   };
+
+   const handleLogin = (e) => {
+      e.preventDefault();
+
+        AuthService.login(username, password).then(
+          () => {
+            navigate("/");
+            window.location.reload();
+          },
+          (error) => {
+            const resMessage =
+              (error.response &&
+                error.response.data &&
+                error.response.data.message) ||
+              error.message ||
+              error.toString();
+  
+            setMessage(resMessage);
+          }
+        );
+    };
+  
+
    return (
-      <form action="" className="w-64 md:w-72 xl:w-96 mx-8">
+      <form onSubmit={handleLogin} className="w-64 md:w-72 xl:w-96 mx-8">
          <div className="relative w-full mb-8 group">
             <input
-               type="email"
-               name="floating_email"
-               id="floating_email_login"
+               type="text"
                className="block py-2.5 px-0 w-full text-sm text-black bg-transparent border-0 border-b-2 border-[#d9dedc] appearance-none focus:outline-none focus:ring-0 focus:border-[#216869] peer"
-               placeholder=" "
+               onChange={onChangeUsername}
+               value={username}
                required
             />
             <label
-               htmlFor="floating_email"
                className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 origin-[0] peer-focus:left-0 peer-focus:text-[#216869] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
             >
-               Email address
+               Name
             </label>
          </div>
          <div className="relative w-full mb-12 group">
             <input
                type="password"
-               name="floating_password"
-               id="floating_password_login"
                className="block py-2.5 px-0 w-full text-sm text-black bg-transparent border-0 border-b-2 border-[#d9dedc] appearance-none focus:outline-none focus:ring-0 focus:border-[#216869] peer"
-               placeholder=" "
+               onChange={onChangePassword}
+               value={password}
                required
             />
             <label

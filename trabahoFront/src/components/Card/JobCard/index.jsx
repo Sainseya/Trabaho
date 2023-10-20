@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Card from "./Card";
+import Card from "./card";
 import { jobDetails } from "../../../Data/datas";
 import JobDescription from "./JobDescription";
 
