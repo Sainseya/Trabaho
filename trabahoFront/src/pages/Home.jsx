@@ -2,19 +2,21 @@ import Header from '../components/Header/';
 import Search from '../components/Search';
 import JobCard from '../components/Card/JobCard';
 import UserCard from '../components/Card/UserCard';
-// import ParticlesBackground from '../components/particlesBackground';
-
+import AuthService from '../services/auth.service';
 const Home = () => {
+   const currentUser = AuthService.getCurrentUser();
+
    return (
-      <div className="flex flex-col gap-5 h-screen">
-         {/* <ParticlesBackground /> */}
-         <Header />
-         <Search />
-         <div className="flex flex-rows lg:px-20 md:px-16 sm:px-8 px-4 sm:mt-60 mt-52 sm:pb-12">
-            <UserCard />
-            <JobCard />
+         <div className="flex flex-col gap-5 h-screen">
+            <Header />
+            <Search />
+            <div className="flex flex-rows lg:px-20 md:px-16 sm:px-8 px-4 sm:mt-60 mt-52 sm:pb-12">
+               <UserCard  />
+               <JobCard />
+            </div>
          </div>
-      </div>
-   );
+
+      )
+   ;
 };
 export default Home;
