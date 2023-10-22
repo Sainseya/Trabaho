@@ -2,9 +2,18 @@ import React, { useState } from "react";
 import Card from "./card";
 import { jobDetails } from "../../../Data/datas";
 import JobDescription from "./JobDescription";
+import jobService from "../../../services/job.service";
+import get from '../../API/get';
+
+
 
 const JobCard = () => {
   const [selectedJob, setSelectedJob] = useState(null);
+
+  const data = get();
+  const { jobs } = data;
+  alert(jobs)
+
 
   const handleJobSelection = (companyId, jobId) => {
     if (
@@ -37,16 +46,13 @@ const JobCard = () => {
   return (
     <div className="lg:pl-64 xl:pl-80 flex-1 items-center gap-9">
       <div className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4">
-        {jobDetails.map((company, companyId) =>
-          company.jobs.map((job, jobId) => (
-            <div key={jobId} className="grid-item flex-1">
+        {jobs.map((company, companyId) =>
+            <div key={companyId} className="grid-item flex-1">
               <Card
-                job={job}
                 company={company}
                 onClick={() => handleJobSelection(companyId, jobId)}
               />
             </div>
-          ))
         )}
         {selectedJob !== null && (
           <div

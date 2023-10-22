@@ -22,6 +22,7 @@ public class Jobs {
     private Long jobsId;
     private String title;
     private String description;
+    private String expecttion;
     private String tags;
     private String location;
     private Integer salary;
