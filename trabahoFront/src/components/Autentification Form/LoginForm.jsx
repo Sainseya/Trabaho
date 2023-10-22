@@ -22,7 +22,6 @@ const LoginForm = () => {
 
    const handleLogin = (e) => {
       e.preventDefault();
-
         AuthService.login(username, password).then(
           () => {
             toast.success('Succès');
@@ -30,14 +29,13 @@ const LoginForm = () => {
             window.location.reload();
           },
           (error) => {
-            toast.error(`Une erreur s'est produite`);
+            toast.error(`Name or password incorrect`);
             const resMessage =
               (error.response &&
                 error.response.data &&
                 error.response.data.message) ||
               error.message ||
               error.toString();
-  
             setMessage(resMessage);
           }
         );

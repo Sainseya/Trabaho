@@ -21,7 +21,6 @@ const User = () => {
 
         setCurrentUser(_content);
       });
-      console.log({currentUser})
   }, []); 
 
   const handleButtonClick = () => {

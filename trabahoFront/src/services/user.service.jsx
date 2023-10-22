@@ -5,7 +5,6 @@ import AuthService from "./auth.service";
 
 const API_URL = "http://localhost:8080/users/";
 
-
 const getUserBoard = () => {
   return axios.get(API_URL + "user", { headers: authHeader() });
 };
@@ -25,11 +24,22 @@ const getUserById = () => {
   }
 };
 
+const updateUser = () => {
+  const user = AuthService.getCurrentUser();
+  if (user && user.id) {
+    return axios.put(API_URL + user.id, { headers: authHeader() });
+  } else {
+    return Promise.reject(new Error("ID d'utilisateur non disponible"));
+  }
+};
+
+
 
 const UserService = {
   getUserBoard,
   getAdminBoard,
   getUserById,
+  updateUser
 };
 
 export default UserService;
