@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
 import { useState, useRef } from "react";
 import { useNavigate } from 'react-router-dom';
 import AuthService from "../../services/auth.service";
 
 
-const RegisterForm = () => {
+const RegisterForm = ({ togglePanel, switchPanel, isMobile }) => {
 
   let navigate = useNavigate();
 
@@ -37,7 +36,11 @@ const RegisterForm = () => {
           (response) => {
             setMessage(response.data.message);
             setSuccessful(true);
-            navigate()
+            if(isMobile){
+               switchPanel(); //*Go to login for mobile
+            } else {
+               togglePanel(); //*Go to login for PC
+            }
           },
           (error) => {
             const resMessage =
