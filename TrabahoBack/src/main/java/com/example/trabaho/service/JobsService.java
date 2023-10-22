@@ -18,9 +18,9 @@ public class JobsService {
         this.modelMapper = modelMapper;
     }
 
-    public List<JobsDTO> findAll(){
-        List<Jobs> jobs = jobsRepository.findAll();
-        return jobs.stream().map(e -> modelMapper.map(e, JobsDTO.class)).collect(Collectors.toList());
+    public List<Jobs> findAll(){
+
+        return jobsRepository.findAll();
     }
 
     public Jobs save(Jobs jobs){

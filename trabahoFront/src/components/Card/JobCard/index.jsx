@@ -12,8 +12,6 @@ const JobCard = () => {
 
   const data = get();
   const { jobs } = data;
-  alert(jobs)
-
 
   const handleJobSelection = (companyId, jobId) => {
     if (
@@ -50,7 +48,7 @@ const JobCard = () => {
             <div key={companyId} className="grid-item flex-1">
               <Card
                 company={company}
-                onClick={() => handleJobSelection(companyId, jobId)}
+                onClick={() => handleJobSelection(companyId, companyId)}
               />
             </div>
         )}
@@ -60,8 +58,8 @@ const JobCard = () => {
             style={{ gridRow: getGridRow() }}
           >
             <JobDescription
-              job={jobDetails[selectedJob.companyId].jobs[selectedJob.jobId]}
-              company={jobDetails[selectedJob.companyId]}
+              job={jobs[selectedJob.companyId]}
+              company={jobs[selectedJob.companyId]}
             />
           </div>
         )}

@@ -22,9 +22,12 @@ public class Jobs {
     private Long jobsId;
     private String title;
     private String description;
-    private String expecttion;
+    private String expectation;
     private String tags;
+    private String place;
+    private String period;
     private String location;
+    private String role;
     private Integer salary;
 
     @ManyToOne

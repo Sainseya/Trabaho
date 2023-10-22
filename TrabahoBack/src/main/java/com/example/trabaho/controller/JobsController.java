@@ -17,7 +17,7 @@ public class JobsController {
     }
 
     @GetMapping("")
-    public List<JobsDTO> findAll(){
+    public List<Jobs> findAll(){
         return jobsService.findAll();
     }
 
