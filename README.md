@@ -93,11 +93,11 @@ Before you begin, ensure you have the following installed :
 
 ### Installation
 
-1. Clone the Repository : 
+1. <strong>Clone the Repository :</strong> 
     ```bash
     git clone https://github.com/EpitechMscProPromo2026/T-WEB-501-LIL_4.git
     ```
-2. Docker Compose : Run the following command at the project's root to start the application
+2. <strong>Docker Compose :</strong> Run the following command at the project's root to start the application
     ```sh
     docker-compose up -d
     ```
@@ -105,7 +105,20 @@ Before you begin, ensure you have the following installed :
     
 <br/>
 
-3. <strong>Frontend Setup :</strong> 
+3. <strong>Backend Setup :</strong>
+
+    Navigate to the "TrabahoBack" directory :
+    ```sh
+    cd TrabahoBack
+    ```
+
+    Build and run the Spring Boot application with Maven :
+    ```sh
+    mvn spring-boot:run
+    ```
+
+
+4. <strong>Frontend Setup :</strong> 
 
     Navigate to the "trabahoFront" directory :
     ```sh
@@ -122,17 +135,6 @@ Before you begin, ensure you have the following installed :
     yarn run dev
     ```
 
-4. <strong>Backend Setup :</strong>
-
-    Navigate to the "TrabahoBack" directory :
-    ```sh
-    cd TrabahoBack
-    ```
-
-    Build and run the Spring Boot application with Maven :
-    ```sh
-    mvn spring-boot:run
-    ```
 
 5. <strong>Access Trabaho :</strong>
 
