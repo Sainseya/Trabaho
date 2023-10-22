@@ -53,7 +53,7 @@ const User = () => {
             height={"20%"}
           />
         </div>
-      {editProfil && <EditProfil onClose={handleEditProfilClose} />}
+      {editProfil && <EditProfil onClose={handleEditProfilClose} setCurrentUser={setCurrentUser}/>}
     </div>
   );
 };

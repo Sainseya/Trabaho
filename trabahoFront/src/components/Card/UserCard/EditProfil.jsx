@@ -3,12 +3,12 @@ import Button from "../../Button";
 import UserService from "../../../services/user.service";
 import { toast, Toaster } from 'react-hot-toast';
 
-const EditProfil = () => {
+const EditProfil = ({ onClose, setCurrentUser }) => {
   const [username, setUsername] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [lastname, setLastname] = useState("");
-  const [onClose, setOnClose] = useState(false);
+  // const [onClose, setOnClose] = useState(false);
 
   const onChangeUsername = (e) => {
     const username = e.target.value;
@@ -30,25 +30,19 @@ const EditProfil = () => {
     setLastname(lastname);
   };
 
-  closeThisPanel = () => {
-    setOnClose(!onClose);
-  };
+  // const closeThisPanel = () => {
+  //   setOnClose(!onClose);
+  // };
 
-  handleInputChange = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    useEffect(() => {
+    
       UserService.updateUser()
         .then((response) => {
           toast.success('Update succes');
           setCurrentUser(response.data);
-          closeThisPanel();
+          onClose();
         })
         .catch((error) => {
           toast.error(`Error`);
@@ -59,7 +53,7 @@ const EditProfil = () => {
   
           setCurrentUser(_content);
         });
-    }, []); 
+     
   };
 
     return (
@@ -68,7 +62,7 @@ const EditProfil = () => {
         <div className="relative bg-slate-50 w-2/4 p-6 rounded-lg shadow-md">
           <button
             className="absolute top-3 right-3 w-8 h-8 bg-red-600 border-2 rounded-full flex justify-center items-center"
-            onClick={closeThisPanel}
+            onClick={onClose}
           >
             <p className="text-white font-bold text-center">X</p>
           </button>
