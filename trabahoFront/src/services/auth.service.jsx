@@ -27,6 +27,7 @@ const register = (username, email, password) => {
 
   const logout = () => {
     localStorage.removeItem("user");
+    return Promise.resolve();
   };
   
 

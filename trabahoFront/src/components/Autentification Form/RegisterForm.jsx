@@ -43,7 +43,7 @@ const RegisterForm = ({ togglePanel, switchPanel, isMobile }) => {
          }
       }})
       .catch((error) => {
-         setIsPanelOpen(true);
+         // setIsPanelOpen(true);
         toast.error(`Une erreur s'est produite`);
       });
 

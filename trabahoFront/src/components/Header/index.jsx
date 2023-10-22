@@ -23,7 +23,7 @@ const Header = () => {
   }
 
   const navigateToAuthPage = () =>{
-    window.location.reload;
+    // window.location.reload();
     navigate('/');
  }
 
