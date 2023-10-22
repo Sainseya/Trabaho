@@ -26,15 +26,15 @@
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
-    <!-- <li>
+    <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
-    </li> -->
+    </li>
     <li><a href="#features">Features</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#utilisation">Utilisation</a></li>
   </ol>
 </details>
 
@@ -80,10 +80,93 @@ The project was created using the following main languages and frameworks :
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ROADMAP -->
-## Roadmap
+## Getting Started
+
+To get Trabaho up and running on your system, follow these steps :
+
+### Prerequisites
+
+Before you begin, ensure you have the following installed :
+
+* Docker : Download and install Docker from https://www.docker.com/get-started.
+* Docker Compose : Ensure you have Docker Compose installed, which is usually bundled with Docker.
+
+### Installation
+
+1. Clone the Repository : 
+    ```sh
+    git clone https://github.com/EpitechMscProPromo2026/T-WEB-501-LIL_4.git
+    ```
+2. Docker Compose : Run the following command at the project's root to start the application
+    ```sh
+    docker-compose up -d
+    ```
+    This will build and start the necessary containers, including the frontend, backend, and PostgreSQL database.
+    
+<br/>
+
+3. <strong>Frontend Setup :</strong> 
+
+    Navigate to the "trabahoFront" directory :
+    ```sh
+    cd trabahoFront
+    ```
+
+    Install dependencies using yarn :
+    ```sh
+    yarn
+    ```
+
+    Start the development server :
+    ```sh
+    yarn run dev
+    ```
+
+4. <strong>Backend Setup :</strong>
+
+    Navigate to the "TrabahoBack" directory :
+    ```sh
+    cd TrabahoBack
+    ```
+
+    Build and run the Spring Boot application with Maven :
+    ```sh
+    mvn spring-boot:run
+    ```
+
+5. <strong>Access Trabaho :</strong>
+
+    Open your web browser and go to the development server URL to access the Trabaho application
 
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+## Utilisation
+
+1. <strong>Registration and Login</strong>
+
+* Launch Trabaho with this, and go to the website
+  ```sh
+  yarn run dev
+  ```
+* Provide your basic information to create your account and click on "Register" 
+* After registration, log in to access all of Trabaho's features.
+
+2. <strong>Job Search</strong>
+
+* Use the search bar to find job listings that match with your skills and preferences.
+
+3. <strong>User Profile</strong>
+
+* Your profile on the left of the screen
+* You can manage your information with the edit profile button
+
+4. <strong>Online Application</strong>
+
+* When you find a job listing that interests you, click on it to see more details.
+* Apply directly for the job through the platform by filling out the required information.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
