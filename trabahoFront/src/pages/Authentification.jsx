@@ -4,7 +4,7 @@ import RegisterForm from '../components/Autentification Form/RegisterForm';
 import { usePanelOpen } from '../components/hooks/usePanelOpen';
 
 
-const AuthentificationPC = () => {
+const AuthentificationPC = ({ isMobile }) => {
    const [isPanelOpen, setIsPanelOpen] = useState(false);
    // const switchPanel = usePanelOpen((state) => state.switchOnLogin)
 
@@ -18,7 +18,7 @@ const AuthentificationPC = () => {
          <div id="left_Container" className="flex-1 my-8 ml-8">
             <div className="flex flex-col items-center justify-evenly h-full bg-[#e5ece9] rounded-l-2xl">
                <h2 className="mt-12 text-2xl">Welcome to Trabaho</h2>
-               <RegisterForm />
+               <RegisterForm togglePanel={togglePanel} isMobile={isMobile} />
                <div className="flex justify-center mb-12">
                   <p>
                      Already have a account ?{' '}
@@ -68,7 +68,7 @@ const AuthentificationPC = () => {
    );
 };
 
-const AuthentificationMobile = () => {
+const AuthentificationMobile = ({ isMobile }) => {
    const [isPanelOpen, setIsPanelOpen] = useState(false);
    const switchPan = usePanelOpen((state) => state.switchOnRegister)
 
@@ -118,6 +118,7 @@ const AuthentificationMobile = () => {
                <div className="flex flex-col items-center justify-evenly h-full bg-[#e5ece9] rounded-t-3xl">
                   <h2 className="mt-6 text-2xl">Welcome to Trabaho</h2>
                   <RegisterForm setIsPanelOpen={setIsPanelOpen} isPanelOpen={isPanelOpen}/>
+
                   <div className="flex justify-center mb-6">
                      <p>
                         Already have a account ?{' '}
@@ -159,7 +160,7 @@ const Authentification = () => {
 
    return (
       <div>
-         {isMobile ? <AuthentificationMobile /> : <AuthentificationPC />}
+         {isMobile ? <AuthentificationMobile isMobile={isMobile}/> : <AuthentificationPC isMobile={isMobile}/>}
       </div>
    );
 }

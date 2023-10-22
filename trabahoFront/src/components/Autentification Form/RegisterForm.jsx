@@ -1,4 +1,3 @@
-import React, { Component } from 'react';
 import { useState, useRef } from "react";
 import { useNavigate } from 'react-router-dom';
 import AuthService from "../../services/auth.service";
@@ -6,7 +5,7 @@ import { toast, Toaster } from 'react-hot-toast';
 import { usePanelOpen } from '../hooks/usePanelOpen';
 
 
-const RegisterForm = () => {
+const RegisterForm = ({ togglePanel, switchPanel, isMobile }) => {
 
   let navigate = useNavigate();
 
@@ -42,6 +41,7 @@ const RegisterForm = () => {
          setIsPanelOpen(true);
         toast.error(`Une erreur s'est produite`);
       });
+
 
     };
    
