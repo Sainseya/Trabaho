@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin
 @RequestMapping("/jobs")
+@CrossOrigin(origins = "*", allowedHeaders = "*", maxAge = 3600)
 public class JobsController {
     public final JobsService jobsService;
     public JobsController(JobsService jobsService){

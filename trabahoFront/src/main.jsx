@@ -16,7 +16,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <Route path={`/profil/`} element={<Home />} />
             <Route path={'/'} element={<Authentification />} />          
             <Route path={'/Authentification'} element={<Authentification />} /> 
-            <Route path={'/adminAuthentification'} element={<AdminAuthentification />} />         
+            <Route path={'/admin'} element={<AdminAuthentification />} />         
             <Route path={'/adminDashboard'} element={<AdminDashboard />} />
          </Routes>
       </Router>

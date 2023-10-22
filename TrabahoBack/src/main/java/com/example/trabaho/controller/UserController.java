@@ -10,15 +10,15 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("/users")
+@CrossOrigin(origins = "*", allowedHeaders = "*", maxAge = 3600)
 public class UserController {
     public final UserService userService;
     public UserController(UserService userService){
         this.userService = userService;
     }
 
-    @GetMapping("/admin")
+    @GetMapping("/getUser")
     @PreAuthorize("hasRole('ADMIN')")
     public List<Users> findAll(){
         return userService.findAll();

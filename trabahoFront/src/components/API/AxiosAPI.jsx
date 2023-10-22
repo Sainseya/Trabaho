@@ -1,4 +1,6 @@
 import axios from 'axios';
+import authHeader from "../../../src/services/auth-headers";
+
 
 const AxiosAPI = {
    //? POST Function
@@ -15,7 +17,7 @@ const AxiosAPI = {
    //? GET Function
    get: async (url) => {
       try {
-         const response = await axios.get(url);
+         const response = await axios.get(url, { headers: authHeader() });
          return response.data;
       } catch (error) {
          //* Gestion d'erreur

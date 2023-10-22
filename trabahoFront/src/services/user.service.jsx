@@ -5,13 +5,6 @@ import AuthService from "./auth.service";
 
 const API_URL = "http://localhost:8080/users/";
 
-const getUserBoard = () => {
-  return axios.get(API_URL + "user", { headers: authHeader() });
-};
-
-const getAdminBoard = () => {
-  return axios.get(API_URL + "admin", { headers: authHeader() });
-};
 
 const getUserById = () => {
   const user = AuthService.getCurrentUser();
@@ -36,8 +29,6 @@ const updateUser = () => {
 
 
 const UserService = {
-  getUserBoard,
-  getAdminBoard,
   getUserById,
   updateUser
 };
