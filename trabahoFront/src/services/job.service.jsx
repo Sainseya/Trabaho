@@ -4,13 +4,17 @@ import authHeader from "./auth-headers";
 
 const API_URL = "http://localhost:8080/jobs/";
 
-const getJobs = () => {
-    return axios.get(API_URL, { headers: authHeader() });
-};
+const updateUser = (userData, jobId) => {
+    if (job && job.id) {
+      return axios.put(API_URL + job.id, userData, { headers: authHeader() });
+    } else {
+      return Promise.reject(new Error("User ID not available"));
+    }
+  };
 
 
 const UserService = {
-    getJobs
+    updateUser
 };
 
 export default UserService;

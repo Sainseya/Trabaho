@@ -27,10 +27,10 @@ const JobDescription = ({ job, company }) => {
               <h2 className="text-lg font-semibold">{job.role}</h2>
               <div className="flex flex-row flex-warp">
                 <span className="inline-block w-20 text-center font-semibold text-sm px-2 py-0.5 rounded-xl bg-blanc_creme text-emeraude mr-1 mb-1">
-                  {job.periode}
+                  {job.period}
                 </span>
                 <span className="inline-block w-20 text-center font-semibold text-sm px-2 py-0.5 rounded-xl bg-blanc_creme text-amber-700 mr-1 mb-1">
-                  {job.where}
+                  {job.place}
                 </span>
               </div>
             </div>
@@ -46,7 +46,7 @@ const JobDescription = ({ job, company }) => {
           <Button name="Apply" width="6rem" height="3rem" onClick={handleButtonClick} />
         </div>
         <div>
-          <p className="text-sm">{job.expectetion}</p>
+          <p className="text-sm">{job.expectation}</p>
         </div>
       </div>
       {applyJob && <ApplyForJob onClose={handleApplyJobClose} />}
