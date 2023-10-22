@@ -3,8 +3,10 @@ import ReactPaginate from 'react-paginate';
 import FilterType from './FilterType';
 import TableJobsRowData from './TableJobsRowData';
 import get from '../../API/get';
+import AddJobPopup from '../AddJobPopup';
 
 const AdminJobsTable = () => {
+   const [addJob, setAddJob] = useState(false);
    const [currentPage, setCurrentPage] = useState(0);
    const jobsPerPage = 6;
 
@@ -13,6 +15,14 @@ const AdminJobsTable = () => {
 
    const offset = currentPage * jobsPerPage;
    const currentJobs = jobs.slice(offset, offset + jobsPerPage);
+
+   const handleButtonClick = () => {
+      setAddJob(true);
+    };
+  
+    const handleClose = () => {
+      setAddJob(false);
+    };
 
    const handlePageClick = ({ selected }) => {
       setCurrentPage(selected);
@@ -59,6 +69,7 @@ const AdminJobsTable = () => {
                      <button
                         type="button"
                         class="flex items-center justify-center text-white bg-[#28c27a] hover:bg-[#59a96a] font-medium rounded-lg text-sm px-4 py-2"
+                        onClick={handleButtonClick}
                      >
                         <svg
                            class="w-3.5 h-3.5 mr-4 text-white"
@@ -185,6 +196,7 @@ const AdminJobsTable = () => {
                </nav>
             </div>
          </div>
+         {addJob && <AddJobPopup onClose={handleClose}/>}
       </section>
    );
 };
