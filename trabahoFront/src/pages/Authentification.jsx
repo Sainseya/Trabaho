@@ -70,7 +70,7 @@ const AuthentificationPC = ({ isMobile }) => {
 
 const AuthentificationMobile = ({ isMobile }) => {
    const [isPanelOpen, setIsPanelOpen] = useState(false);
-   const switchPan = usePanelOpen((state) => state.switchOnRegister)
+   // const switchPan = usePanelOpen((state) => state.switchOnRegister)
 
    const switchPanel = () => {
       setIsPanelOpen(!isPanelOpen);
@@ -90,7 +90,7 @@ const AuthentificationMobile = ({ isMobile }) => {
             >
                <div className="flex flex-col items-center justify-evenly bg-[#e5ece9] h-full w-full rounded-t-3xl">
                   <h2 className="mt-6 text-2xl">Welcome back</h2>
-                  <LoginForm setIsPanelOpen={setIsPanelOpen} isPanelOpen={isPanelOpen}/>
+                  <LoginForm  />
                   <div className="flex justify-center mb-12"></div>
                   <div className="flex justify-center mb-6">
                      <p>
@@ -117,7 +117,7 @@ const AuthentificationMobile = ({ isMobile }) => {
             >
                <div className="flex flex-col items-center justify-evenly h-full bg-[#e5ece9] rounded-t-3xl">
                   <h2 className="mt-6 text-2xl">Welcome to Trabaho</h2>
-                  <RegisterForm setIsPanelOpen={setIsPanelOpen} isPanelOpen={isPanelOpen}/>
+                  <RegisterForm switchPanel={switchPanel} isMobile={isMobile}/>
 
                   <div className="flex justify-center mb-6">
                      <p>

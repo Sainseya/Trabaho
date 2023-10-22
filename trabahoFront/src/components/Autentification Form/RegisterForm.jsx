@@ -36,6 +36,11 @@ const RegisterForm = ({ togglePanel, switchPanel, isMobile }) => {
       .then((response) => {
         if (response.status === 200) {
           toast.success('Succès');
+          if(isMobile){
+            switchPanel(); //*Go to login for mobile
+         } else {
+            togglePanel(); //*Go to login for PC
+         }
       }})
       .catch((error) => {
          setIsPanelOpen(true);
