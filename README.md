@@ -1,7 +1,6 @@
 <a name="readme-top"></a>
 
 <!-- PROJECT INTRO -->
-<br />
 <div align="center">
 
   <h1 align="center">Trabaho</h1>
@@ -24,6 +23,7 @@
       <a href="#about-the-project">About The Project</a>
       <ul>
         <li><a href="#built-with">Built With</a></li>
+        <li><a href="#features">Features</a></li>
       </ul>
     </li>
     <li>
@@ -33,7 +33,6 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#features">Features</a></li>
     <li><a href="#utilisation">Utilisation</a></li>
   </ol>
 </details>
@@ -54,20 +53,20 @@ The project was created using the following main languages and frameworks :
 * [![Vite][Vite]][Vite-url]
 * [![Tailwind][Tailwind.css]][Tailwind-url]
 
-<br/><strong>For the Back : </strong>
+<strong>For the Back : </strong>
 
 * [![Java][Java]][Java-url]
 * [![SpringBoot][SpringBoot]][SpringBoot-url]
 * [![PostgreSQL][PostgreSQL]][PostgreSQL-url]
 
-<br/><strong>API : </strong>
+<strong>API : </strong>
 
 * [![Axios][Axios]][Axios-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- USAGE EXAMPLES -->
-## Features
+### Features
 
 * <strong>Registration and Login:</strong> Users can register with Trabaho by providing their basic information. Once registered, they can log in to access all the platform's features.
 
@@ -79,7 +78,7 @@ The project was created using the following main languages and frameworks :
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- ROADMAP -->
+<!-- Installation -->
 ## Getting Started
 
 To get Trabaho up and running on your system, follow these steps :
@@ -94,10 +93,12 @@ Before you begin, ensure you have the following installed :
 ### Installation
 
 1. <strong>Clone the Repository :</strong> 
+
     ```bash
     git clone https://github.com/EpitechMscProPromo2026/T-WEB-501-LIL_4.git
     ```
 2. <strong>Docker Compose :</strong> Run the following command at the project's root to start the application
+
     ```sh
     docker-compose up -d
     ```
@@ -117,7 +118,6 @@ Before you begin, ensure you have the following installed :
     mvn spring-boot:run
     ```
 
-
 4. <strong>Frontend Setup :</strong> 
 
     Navigate to the "trabahoFront" directory :
@@ -135,11 +135,9 @@ Before you begin, ensure you have the following installed :
     yarn run dev
     ```
 
-
 5. <strong>Access Trabaho :</strong>
 
     Open your web browser and go to the development server URL to access the Trabaho application
-
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -148,9 +146,6 @@ Before you begin, ensure you have the following installed :
 1. <strong>Registration and Login</strong>
 
 * Launch Trabaho with this, and go to the website
-  ```sh
-  yarn run dev
-  ```
 * Provide your basic information to create your account and click on "Register" 
 * After registration, log in to access all of Trabaho's features.
 
