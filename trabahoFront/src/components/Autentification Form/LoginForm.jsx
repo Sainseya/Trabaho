@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { useNavigate } from 'react-router-dom';
 import AuthService from "../../services/auth.service";
+import { toast, Toaster } from 'react-hot-toast';
 
 const LoginForm = () => {
    let navigate = useNavigate();
@@ -24,10 +25,12 @@ const LoginForm = () => {
 
         AuthService.login(username, password).then(
           () => {
-            navigate("/");
+            toast.success('Succès');
+            navigate("/profil");
             window.location.reload();
           },
           (error) => {
+            toast.error(`Une erreur s'est produite`);
             const resMessage =
               (error.response &&
                 error.response.data &&
@@ -42,6 +45,8 @@ const LoginForm = () => {
   
 
    return (
+      <div>
+      <Toaster />
       <form onSubmit={handleLogin} className="w-64 md:w-72 xl:w-96 mx-8">
          <div className="relative w-full mb-8 group">
             <input
@@ -81,6 +86,7 @@ const LoginForm = () => {
             </button>
          </div>
       </form>
+      </div>
    );
 };
 

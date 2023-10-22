@@ -1,17 +1,12 @@
-import React, { Component } from "react";
-import AxiosAPI from "../../API/AxiosAPI";
+import{ Component, useState } from "react";
 import Button from "../../Button";
 
-class EditProfil extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      firstName: "",
-      lastName: "",
-      phoneNumber: "",
-      email: "",
-    };
-  }
+
+const EditProfil = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
+
 
   closeThisPanel = () => {
     this.props.onClose();
@@ -25,7 +20,6 @@ class EditProfil extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { firstName, lastName, phoneNumber, email } = this.state;
 
     const data = {
       firstName: this.state.firstName,
@@ -45,7 +39,6 @@ class EditProfil extends Component {
     closeThisPanel();
   };
 
-  render() {
     return (
       <div className="fixed inset-0 w-screen h-screen flex items-center justify-center z-20 bg-blanc_creme bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10">
         <div className="relative bg-slate-50 w-2/4 p-6 rounded-lg shadow-md">
@@ -114,7 +107,7 @@ class EditProfil extends Component {
                 Phone number
               </label>
             </div>
-            {/* <div className="relative z-0 w-full mb-6 group">
+            <div className="relative z-0 w-full mb-6 group">
               <input
                 type="email"
                 name="email"
@@ -130,7 +123,7 @@ class EditProfil extends Component {
               >
                 Email address
               </label>
-            </div> */}
+            </div>
             <div className="flex justify-center items-center">
               <Button name="Save" width="7rem" height="3rem" />
             </div>
@@ -138,7 +131,6 @@ class EditProfil extends Component {
         </div>
       </div>
     );
-  }
 }
 
 export default EditProfil;

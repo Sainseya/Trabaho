@@ -2,9 +2,7 @@ import Header from '../components/Header/';
 import Search from '../components/Search';
 import JobCard from '../components/Card/JobCard';
 import UserCard from '../components/Card/UserCard';
-import AuthService from '../services/auth.service';
 const Home = () => {
-   const currentUser = AuthService.getCurrentUser();
 
    return (
          <div className="flex flex-col gap-5 h-screen">

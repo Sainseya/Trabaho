@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import LoginForm from '../components/Autentification Form/LoginForm';
 import RegisterForm from '../components/Autentification Form/RegisterForm';
+import { usePanelOpen } from '../components/hooks/usePanelOpen';
+
 
 const AuthentificationPC = () => {
    const [isPanelOpen, setIsPanelOpen] = useState(false);
+   // const switchPanel = usePanelOpen((state) => state.switchOnLogin)
 
    const togglePanel = () => {
-      setIsPanelOpen(!isPanelOpen);
+      setIsPanelOpen(!isPanelOpen)
    };
 
    return (
+
       <div className="flex flex-row h-screen bg-white">
          <div id="left_Container" className="flex-1 my-8 ml-8">
             <div className="flex flex-col items-center justify-evenly h-full bg-[#e5ece9] rounded-l-2xl">
@@ -66,6 +70,7 @@ const AuthentificationPC = () => {
 
 const AuthentificationMobile = () => {
    const [isPanelOpen, setIsPanelOpen] = useState(false);
+   const switchPan = usePanelOpen((state) => state.switchOnRegister)
 
    const switchPanel = () => {
       setIsPanelOpen(!isPanelOpen);
@@ -85,7 +90,7 @@ const AuthentificationMobile = () => {
             >
                <div className="flex flex-col items-center justify-evenly bg-[#e5ece9] h-full w-full rounded-t-3xl">
                   <h2 className="mt-6 text-2xl">Welcome back</h2>
-                  <LoginForm />
+                  <LoginForm setIsPanelOpen={setIsPanelOpen} isPanelOpen={isPanelOpen}/>
                   <div className="flex justify-center mb-12"></div>
                   <div className="flex justify-center mb-6">
                      <p>
@@ -112,7 +117,7 @@ const AuthentificationMobile = () => {
             >
                <div className="flex flex-col items-center justify-evenly h-full bg-[#e5ece9] rounded-t-3xl">
                   <h2 className="mt-6 text-2xl">Welcome to Trabaho</h2>
-                  <RegisterForm />
+                  <RegisterForm setIsPanelOpen={setIsPanelOpen} isPanelOpen={isPanelOpen}/>
                   <div className="flex justify-center mb-6">
                      <p>
                         Already have a account ?{' '}

@@ -1,5 +1,6 @@
 package com.example.trabaho.controller;
 
+import com.example.trabaho.dto.UserDTO;
 import com.example.trabaho.model.Users;
 import com.example.trabaho.service.UserService;
 
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("/users")
 public class UserController {
     public final UserService userService;
@@ -22,6 +23,12 @@ public class UserController {
     public List<Users> findAll(){
         return userService.findAll();
 }
+
+    @GetMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
+    public UserDTO findUserById(@PathVariable Long id){
+        return userService.findUserById(id);
+    }
 
     @PostMapping("")
     @PreAuthorize("hasRole('ADMIN')")
