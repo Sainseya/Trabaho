@@ -94,7 +94,7 @@ Before you begin, ensure you have the following installed :
 ### Installation
 
 1. Clone the Repository : 
-    ```sh
+    ```bash
     git clone https://github.com/EpitechMscProPromo2026/T-WEB-501-LIL_4.git
     ```
 2. Docker Compose : Run the following command at the project's root to start the application
