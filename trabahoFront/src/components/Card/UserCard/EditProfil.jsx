@@ -9,6 +9,14 @@ const EditProfil = ({ onClose, setCurrentUser }) => {
   const [email, setEmail] = useState("");
   const [lastname, setLastname] = useState("");
 
+  const userData = {
+    username,
+    phone,
+    email,
+    lastname,
+  }
+
+
   const onChangeUsername = (e) => {
     const username = e.target.value;
     setUsername(username);
@@ -32,7 +40,7 @@ const EditProfil = ({ onClose, setCurrentUser }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    UserService.updateUser()
+    UserService.updateUser(userData)
       .then((response) => {
         toast.success("Update succes");
         setCurrentUser(response.data);

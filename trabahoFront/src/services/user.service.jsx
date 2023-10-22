@@ -17,15 +17,14 @@ const getUserById = () => {
   }
 };
 
-const updateUser = () => {
+const updateUser = (userData) => {
   const user = AuthService.getCurrentUser();
   if (user && user.id) {
-    return axios.put(API_URL + user.id, { headers: authHeader() });
+    return axios.put(API_URL + user.id, userData, { headers: authHeader() });
   } else {
-    return Promise.reject(new Error("ID d'utilisateur non disponible"));
+    return Promise.reject(new Error("User ID not available"));
   }
 };
-
 
 
 const UserService = {
