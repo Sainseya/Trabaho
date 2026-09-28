@@ -1,4 +1,5 @@
 import axios from 'axios';
+import authHeader from "./auth-headers";
 
 const API_URL = "http://localhost:8080/api/auth/"
 
@@ -26,8 +27,14 @@ const register = (username, email, password) => {
   };
 
   const logout = () => {
-    localStorage.removeItem("user");
-    return Promise.resolve();
+    return axios
+      .post(API_URL + "logout", {}, { headers: authHeader() })
+      .catch(() => {
+        //* Best-effort: still clear the local session even if the server call fails.
+      })
+      .finally(() => {
+        localStorage.removeItem("user");
+      });
   };
   
 

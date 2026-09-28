@@ -1,14 +1,18 @@
 package com.example.trabaho.controller;
 
-import com.example.trabaho.model.Jobs;
 import com.example.trabaho.model.JobsApplication;
+import com.example.trabaho.payload.request.JobsApplicationRequest;
+import com.example.trabaho.security.services.UserDetailsImpl;
 import com.example.trabaho.service.JobsApplicationService;
+import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "*", allowedHeaders = "*", maxAge = 3600)
 @RequestMapping("/jobsApplication")
 public class JobsApplicationController {
     public final JobsApplicationService jobsApplicationService;
@@ -17,12 +21,20 @@ public class JobsApplicationController {
     }
 
     @GetMapping("")
-    public List<JobsApplication> findAll(){
-        return jobsApplicationService.findAll();
+    @PreAuthorize("hasRole('ADMIN')")
+    public Page<JobsApplication> findAll(Pageable pageable){
+        return jobsApplicationService.findAll(pageable);
+    }
+
+    @GetMapping("/me")
+    @PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
+    public Page<JobsApplication> findMine(Pageable pageable, @AuthenticationPrincipal UserDetailsImpl currentUser){
+        return jobsApplicationService.findByUserId(currentUser.getUserId(), pageable);
     }
 
     @PostMapping("")
-    public JobsApplication save(@RequestBody JobsApplication jobsApplication){
-        return jobsApplicationService.save(jobsApplication);
+    @PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
+    public JobsApplication save(@Valid @RequestBody JobsApplicationRequest request, @AuthenticationPrincipal UserDetailsImpl currentUser){
+        return jobsApplicationService.apply(request, currentUser.getUserId());
     }
 }

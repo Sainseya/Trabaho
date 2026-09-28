@@ -1,12 +1,11 @@
 package com.example.trabaho.service;
 
-import com.example.trabaho.dto.JobsDTO;
 import com.example.trabaho.model.Jobs;
 import com.example.trabaho.repository.JobsRepository;
-import org.springframework.stereotype.Service;
 import org.modelmapper.ModelMapper;
-import java.util.List;
-import java.util.stream.Collectors;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 @Service
 public class JobsService {
@@ -18,9 +17,8 @@ public class JobsService {
         this.modelMapper = modelMapper;
     }
 
-    public List<Jobs> findAll(){
-
-        return jobsRepository.findAll();
+    public Page<Jobs> findAll(Pageable pageable){
+        return jobsRepository.findAll(pageable);
     }
 
     public Jobs save(Jobs jobs){

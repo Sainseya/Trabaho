@@ -1,11 +1,10 @@
 package com.example.trabaho.service;
 
 import com.example.trabaho.model.Compagnies;
-import com.example.trabaho.model.Users;
 import com.example.trabaho.repository.CompagniesRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class CompagniesService {
@@ -14,9 +13,8 @@ public class CompagniesService {
         this.compagniesRepository = compagniesRepository;
     }
 
-    public List<Compagnies> findAll(){
-
-        return compagniesRepository.findAll();
+    public Page<Compagnies> findAll(Pageable pageable){
+        return compagniesRepository.findAll(pageable);
     }
 
     public Compagnies save(Compagnies compagnies){

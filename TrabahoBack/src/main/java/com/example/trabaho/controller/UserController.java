@@ -2,12 +2,15 @@ package com.example.trabaho.controller;
 
 import com.example.trabaho.dto.UserDTO;
 import com.example.trabaho.model.Users;
+import com.example.trabaho.payload.request.UserCreateRequest;
+import com.example.trabaho.payload.request.UserUpdateRequest;
 import com.example.trabaho.service.UserService;
 
+import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/users")
@@ -20,9 +23,9 @@ public class UserController {
 
     @GetMapping("/getUser")
     @PreAuthorize("hasRole('ADMIN')")
-    public List<Users> findAll(){
-        return userService.findAll();
-}
+    public Page<Users> findAll(Pageable pageable){
+        return userService.findAll(pageable);
+    }
 
     @GetMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
@@ -32,8 +35,8 @@ public class UserController {
 
     @PostMapping("")
     @PreAuthorize("hasRole('ADMIN')")
-    public Users save(@RequestBody Users user){
-        return userService.save(user);
+    public UserDTO save(@Valid @RequestBody UserCreateRequest request){
+        return userService.create(request);
     }
 
     @DeleteMapping("/{id}")
@@ -44,8 +47,8 @@ public class UserController {
 
     @PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
     @PutMapping("/{userId}")
-    public Users update(@RequestBody Users user, @PathVariable Long userId) throws Error {
-        return userService.update(user,userId);
+    public UserDTO update(@Valid @RequestBody UserUpdateRequest request, @PathVariable Long userId){
+        return userService.update(request, userId);
     }
 
 }

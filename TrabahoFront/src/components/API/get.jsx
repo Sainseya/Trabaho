@@ -12,10 +12,11 @@ const AdminPI = () => {
     useEffect(() => {
         const getUsers = async () => {
             try {
-                const response = await AxiosAPI.get('http://localhost:8080/users');
-                setUsers(response);
-                setNumberOfUsers(response.length);
-            }             
+                // Backend endpoints return a paginated Spring Data Page<T>, not a raw array.
+                const response = await AxiosAPI.get('http://localhost:8080/users/getUser?size=1000');
+                setUsers(response.content);
+                setNumberOfUsers(response.totalElements);
+            }
             catch (error) {
                 console.error("Erreur lors de la requête : ", error);
             }
@@ -23,10 +24,10 @@ const AdminPI = () => {
 
         const getJobs = async () => {
             try {
-                const response = await AxiosAPI.get('http://localhost:8080/jobs');
-                setJobs(response);
-                setNumberOfJobs(response.length);
-            }             
+                const response = await AxiosAPI.get('http://localhost:8080/jobs?size=1000');
+                setJobs(response.content);
+                setNumberOfJobs(response.totalElements);
+            }
             catch (error) {
                 console.error("Erreur lors de la requête : ", error);
             }

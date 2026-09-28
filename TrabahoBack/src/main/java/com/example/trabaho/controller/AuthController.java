@@ -3,13 +3,19 @@ package com.example.trabaho.controller;
 
 import com.example.trabaho.payload.request.LoginRequest;
 import com.example.trabaho.payload.request.SignupRequest;
+import com.example.trabaho.payload.request.TokenRefreshRequest;
+import com.example.trabaho.payload.response.MessageResponse;
+import com.example.trabaho.payload.response.TokenRefreshResponse;
 import com.example.trabaho.repository.RoleRepository;
 import com.example.trabaho.repository.UserRepository;
 import com.example.trabaho.security.jwt.JwtUtils;
 import com.example.trabaho.security.services.AuthService;
+import com.example.trabaho.security.services.RefreshTokenService;
+import com.example.trabaho.security.services.UserDetailsImpl;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,14 +29,16 @@ public class AuthController {
     private final PasswordEncoder encoder;
     private final JwtUtils jwtUtils;
     private final AuthService authService;
+    private final RefreshTokenService refreshTokenService;
 
-    public AuthController(AuthenticationManager authenticationManager, UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder encoder, JwtUtils jwtUtils, AuthService authService) {
+    public AuthController(AuthenticationManager authenticationManager, UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder encoder, JwtUtils jwtUtils, AuthService authService, RefreshTokenService refreshTokenService) {
         this.authenticationManager = authenticationManager;
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.encoder = encoder;
         this.jwtUtils = jwtUtils;
         this.authService = authService;
+        this.refreshTokenService = refreshTokenService;
     }
 
     @PostMapping("/signin")
@@ -41,6 +49,17 @@ public class AuthController {
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
         return authService.signup(signUpRequest);
+    }
+
+    @PostMapping("/refreshtoken")
+    public ResponseEntity<TokenRefreshResponse> refreshToken(@Valid @RequestBody TokenRefreshRequest request) {
+        return ResponseEntity.ok(authService.refreshToken(request));
+    }
+
+    @PostMapping("/logout")
+    public ResponseEntity<MessageResponse> logout(@AuthenticationPrincipal UserDetailsImpl currentUser) {
+        refreshTokenService.deleteByUserId(currentUser.getUserId());
+        return ResponseEntity.ok(new MessageResponse("Logged out successfully!"));
     }
 
 }

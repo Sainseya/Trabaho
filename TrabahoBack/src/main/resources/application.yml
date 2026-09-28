@@ -1,14 +1,18 @@
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql:Your BDD url.
-    username: ""
-    password: ""
+    url: ${DB_URL:jdbc:postgresql://localhost:5433/admin}
+    username: ${DB_USERNAME:admin}
+    password: ${DB_PASSWORD:password123456789}
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
 
 trabaho:
   app:
-    jwtSecret: ""
-    jwtExpirationMs: ""
+    jwtSecret: ${JWT_SECRET:zDcAomCXHzjqaM6HC7azQEF5J05dzB9BjKrGIVbeSOg=}
+    jwtExpirationMs: ${JWT_EXPIRATION_MS:86400000}
+    jwtRefreshExpirationMs: ${JWT_REFRESH_EXPIRATION_MS:604800000}

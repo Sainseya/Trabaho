@@ -1,0 +1,10 @@
+# Optional: containerized frontend dev server (hot reload via bind mount).
+# Prefer `npm install && npm run dev` on the host unless you specifically want
+# the frontend running in Docker too.
+FROM node:20-alpine
+WORKDIR /app
+COPY package.json yarn.lock ./
+RUN yarn install
+COPY . .
+EXPOSE 5173
+CMD ["yarn", "dev", "--host"]

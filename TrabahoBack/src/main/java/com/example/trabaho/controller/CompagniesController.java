@@ -1,15 +1,14 @@
 package com.example.trabaho.controller;
 
 import com.example.trabaho.model.Compagnies;
-import com.example.trabaho.model.Users;
 import com.example.trabaho.service.CompagniesService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "*", allowedHeaders = "*", maxAge = 3600)
 @RequestMapping("/compagnies")
 public class CompagniesController {
     private CompagniesService compagniesService;
@@ -20,8 +19,8 @@ public class CompagniesController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("")
-    public List<Compagnies> findAll(){
-        return compagniesService.findAll();
+    public Page<Compagnies> findAll(Pageable pageable){
+        return compagniesService.findAll(pageable);
     }
 
     @PreAuthorize("hasRole('ADMIN')")

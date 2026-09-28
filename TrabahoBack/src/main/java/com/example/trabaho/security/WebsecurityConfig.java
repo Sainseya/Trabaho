@@ -5,11 +5,8 @@ import com.example.trabaho.security.jwt.AuthEntryPointJwt;
 import com.example.trabaho.security.jwt.AuthTokenFilter;
 import com.example.trabaho.security.jwt.JwtUtils;
 import com.example.trabaho.security.services.UserDetailsServiceImpl;
-import org.apache.catalina.filters.CorsFilter;
-import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.Ordered;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -23,12 +20,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
-import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
-
-import java.util.Arrays;
-import java.util.List;
 
 @Configuration
 @EnableMethodSecurity
@@ -74,7 +65,11 @@ public class WebsecurityConfig {
                 .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth ->
-                        auth.requestMatchers("/api/auth/**").permitAll().requestMatchers("/trabaho/**").permitAll()
+                        auth.requestMatchers("/api/auth/signin", "/api/auth/signup", "/api/auth/refreshtoken").permitAll()
+                                .requestMatchers("/trabaho/**").permitAll()
+                                .requestMatchers(HttpMethod.GET, "/jobs").permitAll()
+                                .requestMatchers("/actuator/health", "/actuator/health/**").permitAll()
+                                .requestMatchers("/swagger-ui/**", "/swagger-ui.html", "/v3/api-docs/**").permitAll()
                                 .anyRequest().authenticated()
                 );
 
@@ -84,17 +79,5 @@ public class WebsecurityConfig {
 
         return http.build();
     }
-
-/*    @Bean
-    CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:5173"));
-        configuration.setAllowedMethods(Arrays.asList("GET","POST"));
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", configuration);
-        return (CorsConfigurationSource) source;
-    }*/
-
-
 
 }

@@ -1,12 +1,32 @@
-version: '3'
 services:
   postgres:
     image: postgres:latest
     container_name: trabaho
     environment:
-      POSTGRES_DB: admin
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: password123456789
+      POSTGRES_DB: ${DB_NAME:-admin}
+      POSTGRES_USER: ${DB_USERNAME:-admin}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-password123456789}
     ports:
-      - "5432:5432"
+      - "${DB_PORT:-5433}:5432"
+    volumes:
+      - trabaho-postgres-data:/var/lib/postgresql/data
 
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: trabaho-backend
+    depends_on:
+      - postgres
+    environment:
+      DB_URL: jdbc:postgresql://postgres:5432/${DB_NAME:-admin}
+      DB_USERNAME: ${DB_USERNAME:-admin}
+      DB_PASSWORD: ${DB_PASSWORD:-password123456789}
+      JWT_SECRET: ${JWT_SECRET:-zDcAomCXHzjqaM6HC7azQEF5J05dzB9BjKrGIVbeSOg=}
+      JWT_EXPIRATION_MS: ${JWT_EXPIRATION_MS:-86400000}
+      JWT_REFRESH_EXPIRATION_MS: ${JWT_REFRESH_EXPIRATION_MS:-604800000}
+    ports:
+      - "8080:8080"
+
+volumes:
+  trabaho-postgres-data:
