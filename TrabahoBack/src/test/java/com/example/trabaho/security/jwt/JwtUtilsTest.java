@@ -14,7 +14,7 @@ class JwtUtilsTest {
     void setUp() {
         jwtUtils = new JwtUtils();
         // Any 32-byte-or-longer Base64 string works for HS256; this one is throwaway/test-only.
-        ReflectionTestUtils.setField(jwtUtils, "jwtSecret", "zDcAomCXHzjqaM6HC7azQEF5J05dzB9BjKrGIVbeSOg=");
+        ReflectionTestUtils.setField(jwtUtils, "jwtSecret", "dGVzdC1vbmx5LXNlY3JldC1kby1ub3QtdXNlLWluLXByb2Q=");
         ReflectionTestUtils.setField(jwtUtils, "jwtExpirationMs", 60000);
     }
 
