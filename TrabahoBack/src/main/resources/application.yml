@@ -3,7 +3,7 @@ spring:
     driver-class-name: org.postgresql.Driver
     url: ${DB_URL:jdbc:postgresql://localhost:5433/admin}
     username: ${DB_USERNAME:admin}
-    password: ${DB_PASSWORD:password123456789}
+    password: ${DB_PASSWORD}
   jpa:
     hibernate:
       ddl-auto: validate
@@ -13,6 +13,6 @@ spring:
 
 trabaho:
   app:
-    jwtSecret: ${JWT_SECRET:zDcAomCXHzjqaM6HC7azQEF5J05dzB9BjKrGIVbeSOg=}
+    jwtSecret: ${JWT_SECRET}
     jwtExpirationMs: ${JWT_EXPIRATION_MS:86400000}
     jwtRefreshExpirationMs: ${JWT_REFRESH_EXPIRATION_MS:604800000}
